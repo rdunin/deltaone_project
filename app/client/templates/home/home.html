@@ -1,0 +1,304 @@
+<template name="Home">
+  
+  <div id="navbar-full">
+    <div id="navbar">
+		<nav class="navbar navbar-default navbar-transparent navbar-fixed-top" role="navigation">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/"><img src="img/logo.png" width="50" ></a>
+            </div>
+        
+		      	<!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+              <ul class="nav navbar-nav navbar-right">
+                <li id="login-dropdown-list" class="dropdown"> 
+        					<a class="dropdown-toggle" data-toggle="dropdown">Sign in / Join <b class="caret"></b></a>
+        					<div class="dropdown-menu"> 
+        						<input id="login-email" type="email" placeholder="Email" class="form-control"> 
+        						<input id="login-password" type="password" placeholder="Password" class="form-control"> 
+        						<button class="btn btn-danger col-xs-12 col-sm-12" id="login-buttons-password" type="button"> Sign in </button>
+        						<div id="login-other-options"> 
+        							<a id="forgot-password-link" class="pull-left">Forgot password?</a>
+        							<a id="signup-link" class="pull-right">Create account</a> 
+        						</div> 
+        					</div> 
+        				</li>
+        			</ul>
+        		  
+        			<ul id="navi" class="nav navbar-nav navbar-right">
+        				<li class="active"><a href="#main">Home</a></li>
+        				<li><a href="#about">About</a></li>
+        				<li><a href="#how">How it works?</a></li>
+        			</ul>
+              
+            </div>
+          </div>
+        </nav>
+		</div>
+  </div>
+  
+  <div id="main" class="blurred-container">
+    <div class="img-src">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="fh5co-owl-text-wrap">
+						<div class="fh5co-owl-text">
+							<h1 class="fh5co-lead to-animate">EVERY PRODUCT</h1>
+							<h2 class="fh5co-sub-lead to-animate">Cheapest Prices.  Guaranteed.</h2>
+							<p class="to-animate-2"><a href="#" onclick="$.scrollTo($('#about'), 1200); return false;" class="btn btn-lg btn-fill btn-danger">Learn More</a></p>
+						</div>
+					</div>			
+				</div>
+			</div>
+		</div>
+		<!-- <TBS>
+		<div class="col-md-3 col-md-offset-9 hidden-xs hidden-sm">
+			<img src="img/try.png" height="200px" >
+		</div>
+		</TBS> -->
+	</div>
+	<div id="tryit" class="hidden-xs"><img src="img/try.png" height="150px" ></div>
+   <div id="tryit" style="top:-130px" class="show-xs"><img src="img/try_sm.png" ></div>
+</div>
+
+<div id="about" class="section">
+	
+	<div id="searchbar">
+		<div class="">
+			<form method="POST" action="/search">
+				<input id="searchform" class="col-md-10 col-sm-9 col-xs-12" type="text" name="search" placeholder="Enter your product search and get it...">
+				<button class="btn btn-lg btn-fill btn-danger pull-right col-md-2 col-sm-3 col-xs-12" style="border-radius: 0px;">Cheaper</button>
+			</form>
+		</div>
+	</div>
+	
+	<div class="space"></div>
+    <div class="container tim-container pull-center">
+       <div class="col-md-12">
+		   <h1 class="text-center">Why we're <strike>kind of</strike> <b>a big deal</b></h1>
+		   <p><img src="img/logo.png" width="50px"> = everything + cheaper prices + guarantees</p>
+		   <hr>
+	   </div>
+       <div class="col-md-4">
+			<div class="pull-center">
+				<img src="img/accortement.jpg" alt="Circle Image" height="250px" class="img-circle">
+			</div>
+			<div class="pull-center">
+				<h3>Yeah, we have that</h3>
+			</div>
+	   </div>
+	   <div class="col-md-4">
+			<div class="pull-center">
+				<img src="img/low_price.jpg" alt="Circle Image" height="250px" class="img-circle">
+			</div>
+			<div class="pull-center">
+				<h3>Yeah, it's cheaper</h3>
+			</div>
+	   </div>
+	   <div class="col-md-4">
+			<div class="pull-center">
+				<img src="img/moneyback.jpg" alt="Circle Image" height="250px" class="img-circle">
+			</div>
+			<div class="pull-center">
+				<h3>Yeah, we'll give you free cash</h3>
+				<p>... if you can find it cheaper</p>
+			</div>
+	   </div>
+	   <div class="col-md-12">
+		   <p>
+		   	  <a href="table.html" class="btn btn-lg btn-danger">Learn more</a>
+		   </p>
+	   </div>
+       
+    </div>
+    <div class="space"></div>
+	
+<!-- end container -->
+</div>
+<!-- end main -->
+
+<div id="how" class="sectionred">
+	
+	<div class="space"></div>
+	<div class="container">
+       
+		<div class="col-md-12 pull-center white">
+			<h1 class="text-center white">The <b>end</b> of comparison shopping headaches</h1>
+			<p class="white">So how's it work anyways?</p>
+			<hr>
+		</div>
+	   
+       <div class="col-md-12 margin20">
+			<div class="col-md-4 pull-center">
+				<img src="img/request.jpg" alt="Circle Image" height="250px" class="img-circle">
+			</div>
+			<div class="col-md-6 whitelab">
+				<div>
+					<h2>1. Search for something</h2>
+					<p>Type in the product name and hit cheaper</p>
+				</div>
+		   </div>
+		</div>
+		
+		<div class="col-md-12 hidden-md hidden-lg margin20">
+			<div class="col-md-4 pull-center">
+				<img src="img/search.jpg" alt="Circle Image" height="250px" class="img-circle">
+			</div>
+			<div class="col-md-6 whitelab">
+				<div>
+					<h2>2. Our AI system scours the internet,</h2>
+					<p>using advanced saving tricks, we find the lowest price.</p>
+				</div>
+		   </div>
+		</div>
+		
+		<div class="col-md-12 hidden-xs hidden-sm margin20">
+			<div class="col-md-7 col-md-offset-1 whitelab">
+				<div>
+					<h2>2. Our AI system scours the internet,</h2>
+					<p>using comprehensive data analytics</p>
+					<p>and advanced saving tricks, we find the lowest price.</p>
+				</div>
+		   </div>
+		   <div class="col-md-4">
+				<img src="img/search.jpg" alt="Circle Image" height="250px" class="img-circle">
+			</div>
+		</div>
+		
+		<div class="col-md-12 margin20">
+			<div class="col-md-4 pull-center">
+				<img src="img/answer.jpg" alt="Circle Image" height="250px" class="img-circle">
+			</div>
+			<div class="col-md-6 whitelab">
+				<div>
+					<h2>3. You get the best price guaranteed!</h2>
+					<p>It's no fuss, no muss.  We handle returns.</p>
+				</div>
+		   </div>
+		</div>
+	   
+       
+    </div>
+    <div class="space"></div>
+	
+</div>
+
+<div id="think" class="section pull-center">
+	<div class="container">
+		
+		<h2>What do our customers say?</h2>
+		<hr>
+		
+		<div class="row">
+			<div class="col-md-12 text-center testimonies">
+				<div class="carousel slide auto" id="d-slide"> 
+					<ol class="carousel-indicators out"> 
+						<li data-target="#d-slide" data-slide-to="0" class="active"></li> 
+						<li data-target="#d-slide" data-slide-to="1" class=""></li> 
+						<li data-target="#d-slide" data-slide-to="2" class=""></li> 
+					</ol> 
+					<div class="carousel-inner"> 
+						<div class="item active">
+							<div class="testimonie-post">
+								<div><a href="#"><img src="img/t1.jpg" alt="Duche Bodouin" width="113" height="113" class="img-circle user-thumb"></a>
+									<h5 class="light">Duche Bodouin</h5>
+									<div class="post">
+										<p class="lead light">Lorem lean startup ipsum product market fit customer development acquihire technical cofounder. User engagement. <br><i class="fa fa-angle-double-right"></i> C.E.O @ ABC Inc</p>
+									</div>
+								</div>
+							</div>
+						</div> 
+						<div class="item">
+							<div class="testimonie-post">
+								<div><a href="#"><img src="img/t2.jpg" alt="Martin Deo" width="113" height="113" class="img-circle user-thumb"></a>
+									<h5 class="light">Martin Deo</h5>
+									<div class="post">
+										<p class="lead light">Lorem lean startup ipsum product market fit customer development acquihire technical cofounder. User engagement. <br><i class="fa fa-angle-double-right"></i> C.E.O @ ABC Inc</p>
+									</div>
+								</div>
+							</div>
+						</div> 
+						<div class="item"> 
+							<div class="testimonie-post">
+								<div><a href="#"><img src="img/t3.jpg" alt="Mark Deo" width="113" height="113" class="img-circle user-thumb"></a>
+									<h5 class="light">Mark Deo</h5>
+									<div class="post">
+										<p class="lead light">Lorem lean startup ipsum product market fit customer development acquihire technical cofounder. User engagement.<br><i class="fa fa-angle-double-right"></i> C.E.O @ ABC Inc</p>
+									</div>
+								</div>
+							</div>
+						</div> 
+					</div> 
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+</div>
+
+<div class="section sectionjoin">
+	<div class="overlay"></div>
+	<div class="container pull-center white" style="z-index: 15;position: relative;">
+		<div style="margin: 150px 0px;">
+			<h2><b>Join</b> the cheaper-than-everyone, one-click buying revolution and let our high-tech command center dehassle shopping.</h2>
+		</div>
+	</div>
+</div>
+
+<div class="section contact-us">
+	<div class="container pull-center">
+	  <div class="row">
+  		<div class="col-md-8 col-md-offset-2">
+  			<h3 style="margin-bottom:20px;">Need any help? Contact us now!</h3>
+  			<a href="#" onclick="$('.expanded-contact-form').toggle(); return false;" class="btn btn-lg btn-round btn-danger contact-link"><span class="glyphicon glyphicon-envelope"></span> Contact us now</a>
+  			
+  			<!-- EXPANDED CONTACT FORM -->
+  			<div class="expanded-contact-form" style="display: none; padding: 20px;">
+  				
+  				<!-- FORM -->
+  				<form class="contact-form" id="contact" role="form">
+  					
+  					<!-- IF MAIL SENT SUCCESSFULLY -->
+  					<h6 class="success" style="display: none;">
+  					<span class="olored-text icon_check"></span> Your message has been sent successfully. </h6>
+  					
+  					<!-- IF MAIL SENDING UNSUCCESSFULL -->
+  					<h6 class="error" style="display: none;">
+  					<span class="colored-text icon_error-circle_alt"></span> E-mail must be valid and message must be longer than 1 character. </h6>
+  					
+  					<div class="field-wrapper col-md-6">
+  						<input class="form-control input-box" id="cf-name" type="text" name="cf-name" placeholder="Your Name">
+  					</div>
+  					
+  					<div class="field-wrapper col-md-6">
+  						<input class="form-control input-box" id="cf-email" type="email" name="cf-email" placeholder="Email">
+  					</div>
+  					
+  					<div class="field-wrapper col-md-12">
+  						<textarea class="form-control textarea-box" id="cf-message" rows="7" name="cf-message" placeholder="Your Message"></textarea>
+  					</div>
+  					
+  					<button class="btn btn-danger" type="submit" id="cf-submit" name="submit" data-style="expand-left">Send Message</button>
+  				</form>
+  				<!-- /END FORM -->
+  			</div>
+  			
+  		</div>
+  	</div>
+	</div>
+</div>
+
+{{> Footer}}
+  
+</template>
