@@ -63,4 +63,6 @@ Template.Home.onRendered(function () {
 });
 
 Template.Home.onDestroyed(function () {
+    $(document).unbind( "scroll" );
+    $(window).scrollTop(0);
 });

@@ -17,29 +17,17 @@
         
 		      	<!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-              <ul class="nav navbar-nav navbar-right">
-                <li id="login-dropdown-list" class="dropdown"> 
-        					<a class="dropdown-toggle" data-toggle="dropdown">Sign in / Join <b class="caret"></b></a>
-        					<div class="dropdown-menu"> 
-        						<input id="login-email" type="email" placeholder="Email" class="form-control"> 
-        						<input id="login-password" type="password" placeholder="Password" class="form-control"> 
-        						<button class="btn btn-danger col-xs-12 col-sm-12" id="login-buttons-password" type="button"> Sign in </button>
-        						<div id="login-other-options"> 
-        							<a id="forgot-password-link" class="pull-left">Forgot password?</a>
-        							<a id="signup-link" class="pull-right">Create account</a> 
-        						</div> 
-        					</div> 
-        				</li>
-        			</ul>
+		  		<ul class="nav navbar-nav navbar-right">
+              		{{> loginButtons}}
+       			</ul>
         		  
-        			<ul id="navi" class="nav navbar-nav navbar-right">
-        				<li class="active"><a href="#main">Home</a></li>
-        				<li><a href="#about">About</a></li>
-        				<li><a href="#how">How it works?</a></li>
-        			</ul>
-              
+    			<ul id="navi" class="nav navbar-nav navbar-right">
+    				<li class="active"><a href="#main">Home</a></li>
+    				<li><a href="#about">About</a></li>
+    				<li><a href="#how">How it works?</a></li>
+    			</ul>
             </div>
+            
           </div>
         </nav>
 		</div>
@@ -54,7 +42,7 @@
 					<div class="fh5co-owl-text-wrap">
 						<div class="fh5co-owl-text">
 							<h1 class="fh5co-lead to-animate">EVERY PRODUCT</h1>
-							<h2 class="fh5co-sub-lead to-animate">Cheapest Prices.  Guaranteed.</h2>
+							<h2 class="fh5co-sub-lead to-animate">Cheapest Price.  Guaranteed.</h2>
 							<p class="to-animate-2"><a href="#" onclick="$.scrollTo($('#about'), 1200); return false;" class="btn btn-lg btn-fill btn-danger">Learn More</a></p>
 						</div>
 					</div>			
@@ -67,8 +55,10 @@
 		</div>
 		</TBS> -->
 	</div>
+	<!-- <TBS> -->
 	<div id="tryit" class="hidden-xs"><img src="img/try.png" height="150px" ></div>
    <div id="tryit" style="top:-130px" class="show-xs"><img src="img/try_sm.png" ></div>
+	<!-- </TBS> -->
 </div>
 
 <div id="about" class="section">
@@ -116,7 +106,7 @@
 	   </div>
 	   <div class="col-md-12">
 		   <p>
-		   	  <a href="table.html" class="btn btn-lg btn-danger">Learn more</a>
+		   	  <a href="/compare" class="btn btn-lg btn-danger">Learn more</a>
 		   </p>
 	   </div>
        
@@ -166,8 +156,7 @@
 			<div class="col-md-7 col-md-offset-1 whitelab">
 				<div>
 					<h2>2. Our AI system scours the internet,</h2>
-					<p>using comprehensive data analytics</p>
-					<p>and advanced saving tricks, we find the lowest price.</p>
+					<p>using advanced saving tricks, we find the lowest price.</p>
 				</div>
 		   </div>
 		   <div class="col-md-4">

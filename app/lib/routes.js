@@ -16,3 +16,9 @@ Router.route('/search', {
   controller: 'SearchController',
   where: 'client'
 });
+
+Router.route('/compare', {
+  name: 'compare',
+  controller: 'CompareController',
+  where: 'client'
+});

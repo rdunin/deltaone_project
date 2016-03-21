@@ -18,18 +18,7 @@
                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
    
    				<ul class="nav navbar-nav navbar-right">
-   				   <li id="login-dropdown-list" class="dropdown"> 
-   						<a class="dropdown-toggle" data-toggle="dropdown">Sign in / Join <b class="caret"></b></a>
-   						<div class="dropdown-menu"> 
-   							<input id="login-email" type="email" placeholder="Email" class="form-control"> 
-   							<input id="login-password" type="password" placeholder="Password" class="form-control"> 
-   							<button class="btn btn-danger col-xs-12 col-sm-12" id="login-buttons-password" type="button"> Sign in </button>
-   							<div id="login-other-options"> 
-   								<a id="forgot-password-link" class="pull-left">Forgot password?</a>
-   								<a id="signup-link" class="pull-right">Create account</a> 
-   							</div> 
-   						</div> 
-   					</li>
+   				   {{> loginButtons}}
    				</ul>
    			  
    				<ul id="navi" class="nav navbar-nav navbar-right">
