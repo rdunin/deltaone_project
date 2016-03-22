@@ -25,6 +25,9 @@
     				<li class="active"><a href="#main">Home</a></li>
     				<li><a href="#about">About</a></li>
     				<li><a href="#how">How it works?</a></li>
+    				{{#if isInRole 'admin'}}
+    					<li><a href="/employee">Employee</a></li>
+  					{{/if}}
     			</ul>
             </div>
             
@@ -57,7 +60,7 @@
 	</div>
 	<!-- <TBS> -->
 	<div id="tryit" class="hidden-xs"><img src="img/try.png" height="150px" ></div>
-   <div id="tryit" style="top:-130px" class="show-xs"><img src="img/try_sm.png" ></div>
+   <div id="tryit" style="top:-130px" class="visible-xs"><img src="img/try_sm.png" ></div>
 	<!-- </TBS> -->
 </div>
 

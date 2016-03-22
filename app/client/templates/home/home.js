@@ -25,9 +25,36 @@ Template.Home.helpers({
 /*****************************************************************************/
 Template.Home.onCreated(function () {
     
+    if (Roles.subscription.ready()){
+        
+        if(Roles.userIsInRole(Meteor.userId(), 'admin')){
+            console.log("Admin");
+        }else{
+            console.log("Guest");
+        }
+        
+        if(Roles.userIsInRole(Meteor.userId(), 'user')){
+            console.log("User");
+        }else{
+            console.log("Guest");
+        }
+          
+    }
+    
+    
 });
 
 Template.Home.onRendered(function () {
+    
+//   Meteor.call('sendEmail',{
+//     to: 'romandunin@gmail.com',
+//     from: 'infaman@yandex.ru',
+//     subject: 'I really like sending emails with Mailgun!',
+//     text: 'Mailgun is totally awesome for sending emails!',
+//     html: 'With meteor it&apos;s easy to set up <strong>HTML</strong> <span style="color:red">emails</span> too.'
+//   });
+   
+    //Meteor.call('addrole');
    
    $(document).ready(function() {
 		
