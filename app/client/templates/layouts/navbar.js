@@ -30,9 +30,12 @@ Template.Navbar.onCreated(function () {
 });
 
 Template.Navbar.onRendered(function () {
-   if(Roles.userIsInRole(Meteor.userId(), 'user')){
-      var ava = "<img src="+Meteor.user().profile.picture+" width='30px'>"
-      $('.dropdown-toggle').prepend(ava);
+   if (Roles.subscription.ready()){
+      if(Roles.userIsInRole(Meteor.userId(), 'user')){
+         console.log("Add avatar");
+         var ava = "<img src="+Meteor.user().profile.picture+" width='30px'>"
+         $('.dropdown-toggle').prepend(ava);
+      }
    }
 });
 

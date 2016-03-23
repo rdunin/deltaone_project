@@ -13,7 +13,7 @@ Meteor.methods({
     Roles.addUsersToRoles(Meteor.userId(), 'admin');
   },
   'sendEmail': function(mailFields) {
-    Email.send({to:mailFields.to, from: 'info@deltaone.com', subject:'Welcome to DeltaOne', html: mailFields.html });
+    Email.send({to: mailFields.to, from: 'info@deltaone.com', subject: mailFields.subject, html: mailFields.html });
     console.log("Email Sended");
   }
 });

@@ -898,15 +898,22 @@ input.ct-red + span.switch-left, input.ct-red + span + label + span.switch-right
 .navbar .alert{
     border-radius: 0;
     left: 0;
-    position: absolute;
+    *position: absolute;
     right: 0;
-    top: 85px;
+    *top: 85px;
     width: 100%;
     z-index: 3;
     transition: all 0.3s;
+    
+    top: 0px;
+    margin-bottom: -3px;
+    position: relative;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
 }
 .navbar:not(.navbar-transparent) .alert{
-    top: 70px;
+    *top: 70px;
 }
 
 .text-primary, .text-primary:hover{
@@ -2044,7 +2051,7 @@ dl {
 }
 
 .compare{
-	margin: 50px 0px 20px 0px;	
+	margin: 70px 0px 20px 0px;	
 }
 
 .fared{
@@ -2111,6 +2118,24 @@ dl {
 
 .btn-Facebook{
     background-color: #47639E;
+}
+
+.btn-Facebook:hover{
+    background-color: #354A75;
+    color: #fff;
+}
+
+.btn-Google{
+    background-color: #db5a3c;
+}
+
+.btn-Google:hover{
+    background-color: #BB3D20;
+    color: #fff;
+}
+
+.dropdown-toggle img{
+    border-radius: 35px;
 }
 
 input:focus,
