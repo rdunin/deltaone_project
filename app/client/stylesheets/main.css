@@ -2109,6 +2109,10 @@ dl {
     border-color: #fff;
 }
 
+.btn-Facebook{
+    background-color: #47639E;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
