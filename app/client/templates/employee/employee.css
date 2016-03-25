@@ -158,3 +158,65 @@ margin-top: 40px;
 .marg-0{
 	margin: 0px;
 }
+
+
+#itemadd{
+  padding: 20px;
+}
+
+.autoform-add-item.btn {
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background: #eee;
+}
+
+.autoform-remove-item.btn {
+    background: #eee;
+    box-shadow: none;
+    border: none;
+    border-radius: 50%;
+    font-size: 1em;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    display: block;
+    padding: 0;
+}
+
+.autoform-array-item-body .panel{
+  border: none;
+  border-bottom: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.autoform-array-item-body .panel-body{
+  padding: 0px;
+  margin: 0px;
+}
+
+
+.list-group-item .autoform-array-item{
+  border-width: 0;
+  border-radius: 0;
+  padding: 0px;
+}
+
+.panel > .list-group .list-group-item, .panel > .panel-collapse > .list-group .list-group-item{
+  border-width: 0;
+  border-radius: 0;
+}
+
+.autoform-remove-item-wrap{
+  padding-top:30px;
+}
+
+.autoform-array-item-body .form-group{
+  margin: 0px;
+}
+
+.panel-default .panel-heading{
+  box-shadow: none !important;
+}

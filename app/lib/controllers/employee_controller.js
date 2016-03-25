@@ -7,7 +7,7 @@ EmployeeController = RouteController.extend({
   
   subscriptions: function() {
     this.subscribe('searchemp');
-    //this.subscribe('items');
+    this.subscribe('items');
     this.subscribe('userStatus');
   },
   

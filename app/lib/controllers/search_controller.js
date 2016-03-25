@@ -7,6 +7,7 @@ SearchController = RouteController.extend({
   
   subscriptions: function() {
     this.subscribe('search');
+    this.subscribe('items');
   },
   
   // Subscriptions or other things we want to "wait" on. This also

@@ -16,26 +16,13 @@
                 </tr>
               </thead>
               <tbody>
+                {{#each search}}
                 <tr>
-                  <td><i class="fa fa-circle reg"></i></td>
-                  <td>TV LG 34"</td>
+                  <td><i class="fa fa-circle {{#if equals userGuest 'null'}} null {{else}} {{#if userGuest}}guest{{else}}reg{{/if}} {{/if}}"></i></td>
+                  <td>{{query}}</td>
                   <td>30s</td>
                 </tr>
-                <tr>
-                  <td><i class="fa fa-circle guest"></i></td>
-                  <td>Iphone 6s 32GB</td>
-                  <td>23s</td>
-                </tr>
-                <tr>
-                  <td><i class="fa fa-circle reg"></i></td>
-                  <td>iMac</td>
-                  <td>13s</td>
-                </tr>
-                <tr>
-                  <td><i class="fa fa-circle guest"></i></td>
-                  <td>iPad Mini</td>
-                  <td>5s</td>
-                </tr>
+                {{/each}}
               </tbody>
             </table>
           </div>
@@ -46,7 +33,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-7 col-md-offset-3 adminmain">
           <div class="col-md-12 borderbar">
           	<b>Users online:</b> {{usersOnlineCount}}
-          	<b>Querys:</b> 4
+          	<b>Querys:</b> {{SearchCount}}
           </div>
           
           <div class="col-md-12 borderbar">
@@ -74,9 +61,43 @@
             
           </div>
           
+          
+          <div id="itemadds" class="col-md-12 borderbar hidden">
+          	
+          	<div class="row">
+          		<h4 class="col-sm-11" style="margin: 0px;">Add Item</h4>
+          		<a class="col-sm-1 pull-right faclose" href="#" onclick="$('#itemadds').toggleClass('hidden'); return false;"><i class="fa fa-close"></i></a>	
+          	</div>
+            
+            <div id="itemadd" class="form-horizontal">
+              {{> quickForm collection="Items" id="insertItemsForm" type="insert" }}
+            </div>
+          
+          </div>
+          
+          <div id="itemedit" class="col-md-12 borderbar hidden">
+          	
+          	<div class="row">
+          		<h4 class="col-sm-11" style="margin: 0px;">Edit Item</h4>
+          		<a class="col-sm-1 pull-right faclose" href="#" onclick="$('#itemedit').hide(); return false;"><i class="fa fa-close"></i></a>	
+          	</div>
+            
+            <div id="itemadd" class="form-horizontal">
+              
+              <!--{{#if editMode}}-->
+                <!--{{> quickForm collection="Items" id=updateItemId type="update" doc=edititem }}-->
+              <!--{{/if}}-->
+              
+            </div>
+          
+          </div>
+          
+            
+          
+          
           <div class="col-md-12 borderbar">
           	<div class="row">
-          		<h4 class="col-sm-11" style="margin: 0px;">Add/Edit Item</h4>
+          		<h4 class="col-sm-11" style="margin: 0px;">Edit Item</h4>
           		<a class="col-sm-1 pull-right faclose" href="#"><i class="fa fa-close"></i></a>	
           	</div>
           	
@@ -154,7 +175,7 @@
           	<div class="form-group">
           		<input type="text" name="query" class="form-control" placeholder="Search item">
           		<br>
-          		<a href="add-item.html" class="btn btn-md btn-fill btn-block btn-danger">Add New</a>
+          		<a href="#" class="btn btn-md btn-fill btn-block btn-danger" onclick="$('#itemadds').toggleClass('hidden'); return false;">Add Item</a>
           	</div>
           	
           	<div class="table-responsive">
@@ -166,22 +187,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>TV LG 34"</td>
-                  <td>345</td>
-                </tr>
-                <tr>
-                  <td>Iphone 6s 32GB</td>
-                  <td>659</td>
-                </tr>
-                <tr>
-                  <td>iMac</td>
-                  <td>899</td>
-                </tr>
-                <tr>
-                  <td>iPad Mini</td>
-                  <td>399</td>
-                </tr>
+                {{#each items}}
+                  <tr class="itemid">
+                    <td>{{title}}</td>
+                    <td>{{price}}</td>
+                  </tr>
+                {{/each}}
               </tbody>
             </table>
           </div>
