@@ -1,26 +1,27 @@
 /*****************************************************************************/
-/* Search: Event Handlers */
+/* Work: Event Handlers */
 /*****************************************************************************/
-Template.Search.events({
+Template.Work.events({
 });
 
 /*****************************************************************************/
-/* Search: Helpers */
+/* Work: Helpers */
 /*****************************************************************************/
-Template.Search.helpers({
-   time: function () {
-      
+Template.Work.helpers({
+   usersOnlineCount:function(){
+       //event a count of users online too.
+       return Meteor.users.find({ "status.online": true }).count();
    }
 });
 
 /*****************************************************************************/
-/* Search: Lifecycle Hooks */
+/* Work: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Search.onCreated(function () {
+Template.Work.onCreated(function () {
 });
 
-Template.Search.onRendered(function () {
+Template.Work.onRendered(function () {
 });
 
-Template.Search.onDestroyed(function () {
+Template.Work.onDestroyed(function () {
 });

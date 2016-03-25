@@ -1,26 +1,26 @@
 /*****************************************************************************/
-/* Search: Event Handlers */
+/* Navbar: Event Handlers */
 /*****************************************************************************/
-Template.Search.events({
+Template.EmpNavbar.events({
+   
 });
 
 /*****************************************************************************/
-/* Search: Helpers */
+/* Navbar: Helpers */
 /*****************************************************************************/
-Template.Search.helpers({
-   time: function () {
-      
-   }
+Template.EmpNavbar.helpers({
 });
 
 /*****************************************************************************/
-/* Search: Lifecycle Hooks */
+/* Navbar: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Search.onCreated(function () {
+Template.EmpNavbar.onCreated(function () {
+   
 });
 
-Template.Search.onRendered(function () {
+Template.EmpNavbar.onRendered(function () {
+   
 });
 
-Template.Search.onDestroyed(function () {
+Template.EmpNavbar.onDestroyed(function () {
 });

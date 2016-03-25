@@ -1,0 +1,194 @@
+<template name="Work">
+  
+  {{> EmpNavbar}}
+  
+  <div class="container-fluid">
+      <div class="row">
+      	<div class="col-sm-3 col-md-3 sidebar">
+      	  
+        <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th><i class="fa fa-user"></i></th>
+                  <th>Query</th>
+                  <th><i class="fa fa-clock-o"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><i class="fa fa-circle reg"></i></td>
+                  <td>TV LG 34"</td>
+                  <td>30s</td>
+                </tr>
+                <tr>
+                  <td><i class="fa fa-circle guest"></i></td>
+                  <td>Iphone 6s 32GB</td>
+                  <td>23s</td>
+                </tr>
+                <tr>
+                  <td><i class="fa fa-circle reg"></i></td>
+                  <td>iMac</td>
+                  <td>13s</td>
+                </tr>
+                <tr>
+                  <td><i class="fa fa-circle guest"></i></td>
+                  <td>iPad Mini</td>
+                  <td>5s</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        
+        </div>
+        
+        
+        <div class="col-sm-9 col-sm-offset-3 col-md-7 col-md-offset-3 adminmain">
+          <div class="col-md-12 borderbar">
+          	<b>Users online:</b> {{usersOnlineCount}}
+          	<b>Querys:</b> 4
+          </div>
+          
+          <div class="col-md-12 borderbar">
+          	<h4 style="margin: 0px;">Working Query</h4>
+          	<dl id="shipping" class="dl-horizontal col-md-6"> 
+                    <dt>Query</dt>
+                    <dd>TV LG 34"</dd>
+                    <dt>From</dt>
+                    <dd>Guest</dd>
+                    <dt>Time</dt>
+                    <dd>20s</dd>
+            </dl>
+            
+            <div id="personaledit" class="form-horizontal col-md-6">
+	                    <div class="form-group">
+	                        <label class="col-sm-3 control-label">ItemID</label>
+	                        <div class="col-sm-9">
+	                            <input type="text" name="itemid" class="form-control" value="" placeholder="ItemID">
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+                    		<a href="#" class="btn btn-sm btn-fill btn-danger pull-right">Send</a>	
+                    	</div>
+	                </div>
+            
+          </div>
+          
+          <div class="col-md-12 borderbar">
+          	<div class="row">
+          		<h4 class="col-sm-11" style="margin: 0px;">Add/Edit Item</h4>
+          		<a class="col-sm-1 pull-right faclose" href="#"><i class="fa fa-close"></i></a>	
+          	</div>
+          	
+          	<div id="itemadd" class="form-horizontal">
+          		<div class="form-group">
+                    <label class="col-sm-1 control-label">Title</label>
+                    <div class="col-sm-7">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="text" name="title" class="form-control" value="" placeholder="Iphone 6S">
+                            </div>
+                        </div>
+                    </div>
+                    <label class="col-sm-1 control-label">Price</label>
+                    <div class="col-sm-3">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="text" name="price" class="form-control" value="" placeholder="500.00">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">Model</label>
+                    <div class="col-sm-5">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="text" name="model" class="form-control" value="" placeholder="UN55JS7000FXZA">
+                            </div>
+                        </div>
+                    </div>
+                    <label class="col-sm-1 control-label">SKU</label>
+                    <div class="col-sm-5">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="text" name="sku" class="form-control" value="" placeholder="4213306">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Photo</label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="text" name="photo" class="form-control" value="" placeholder="Photo Url">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <textarea rows="5" style="width: 100%;" name="text"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            	
+                <div class="form-group">
+                	<div class="col-sm-12">
+                		<a href="#" class="btn btn-sm btn-fill btn-danger pull-right">Save</a>
+                	</div>	
+                </div>
+            </div>
+          	
+          </div>
+		  
+		</div>
+		
+		<div class="col-md-2 sidebaright">
+          	<div class="form-group">
+          		<input type="text" name="query" class="form-control" placeholder="Search item">
+          		<br>
+          		<a href="add-item.html" class="btn btn-md btn-fill btn-block btn-danger">Add New</a>
+          	</div>
+          	
+          	<div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th><i class="fa fa-usd"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>TV LG 34"</td>
+                  <td>345</td>
+                </tr>
+                <tr>
+                  <td>Iphone 6s 32GB</td>
+                  <td>659</td>
+                </tr>
+                <tr>
+                  <td>iMac</td>
+                  <td>899</td>
+                </tr>
+                <tr>
+                  <td>iPad Mini</td>
+                  <td>399</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          	
+          </div>
+        
+      </div>
+    </div>
+  
+</template>

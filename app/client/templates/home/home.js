@@ -3,13 +3,26 @@
 /*****************************************************************************/
 Template.Home.events({
    'submit form': function(event){
-    event.preventDefault();
-    var search = event.target.search.value;
-    console.log(search);
-    
-    //console.log(sid);
-    
-     Router.go('search', {}, {query: 'query='+search});
+        event.preventDefault();
+        var search = event.target.search.value;
+        console.log(search);
+        
+        check(search, String);
+        
+        var tmp = document.createElement("DIV");
+        tmp.innerHTML = search;
+        var search = tmp.textContent || tmp.innerText || "";
+        var search = $.trim(search);
+        
+        var sid = Search.insert({
+            query: search,
+            user: Meteor.userId()
+        });
+        
+        Router.go('search', {}, {query: 'id='+sid});
+    },
+    'click .employee' : function(){
+         Router.go('EmployeeWork');
     }
 });
 

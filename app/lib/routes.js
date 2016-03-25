@@ -22,3 +22,10 @@ Router.route('/compare', {
   controller: 'CompareController',
   where: 'client'
 });
+
+Router.route('/employee/work', {
+  name: 'EmployeeWork',
+  controller: 'EmployeeController',
+  action: 'work',
+  where: 'client'
+});

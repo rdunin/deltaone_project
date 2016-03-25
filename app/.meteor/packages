@@ -40,3 +40,6 @@ email
 accounts-facebook
 service-configuration
 accounts-google
+
+remcoder:chronos
+momentjs:moment
