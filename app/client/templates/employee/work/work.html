@@ -17,10 +17,10 @@
               </thead>
               <tbody>
                 {{#each search}}
-                <tr>
+                <tr class="queryid">
                   <td><i class="fa fa-circle {{#if equals userGuest 'null'}} null {{else}} {{#if userGuest}}guest{{else}}reg{{/if}} {{/if}}"></i></td>
                   <td>{{query}}</td>
-                  <td>30s</td>
+                  <td>{{Timer}} s</td>
                 </tr>
                 {{/each}}
               </tbody>
@@ -36,9 +36,15 @@
           	<b>Querys:</b> {{SearchCount}}
           </div>
           
-          <div class="col-md-12 borderbar">
-          	<h4 style="margin: 0px;">Working Query</h4>
-          	<dl id="shipping" class="dl-horizontal col-md-6"> 
+          <div id="querywork" class="col-md-12 borderbar" style="display:none;">
+          	
+          	<div class="row">
+          	  <h4 class="col-sm-10" style="margin: 0px;">Working Query</h4>
+          		<a class="col-sm-1 pull-right faclose" href="#" onclick="$('#querywork').hide(); return false;"><i class="fa fa-close"></i></a>	
+          		<a class="col-sm-1 pull-right fatrash" href="#"><i class="fa fa-trash"></i></a>	
+          	</div>
+          	
+          	<dl class="dl-horizontal col-md-6"> 
                     <dt>Query</dt>
                     <dd>TV LG 34"</dd>
                     <dt>From</dt>
@@ -47,17 +53,23 @@
                     <dd>20s</dd>
             </dl>
             
-            <div id="personaledit" class="form-horizontal col-md-6">
-	                    <div class="form-group">
-	                        <label class="col-sm-3 control-label">ItemID</label>
-	                        <div class="col-sm-9">
-	                            <input type="text" name="itemid" class="form-control" value="" placeholder="ItemID">
-	                        </div>
-	                    </div>
-	                    <div class="form-group">
-                    		<a href="#" class="btn btn-sm btn-fill btn-danger pull-right">Send</a>	
-                    	</div>
-	                </div>
+            <div class="form-horizontal col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">QueryId</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="queryid" class="form-control" value="" placeholder="QueryId" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">ItemID</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="itemid" class="form-control" value="" placeholder="ItemID">
+                    </div>
+                </div>
+                <div class="form-group">
+              		<a href="#" class="btn btn-sm btn-fill btn-danger pull-right">Answer</a>	
+              	</div>
+            </div>
             
           </div>
           
@@ -75,96 +87,94 @@
           
           </div>
           
-          <div id="itemedit" class="col-md-12 borderbar hidden">
-          	
+          
+          <div id="itemedit" class="col-md-12 borderbar" style="display:none;">
+            
           	<div class="row">
           		<h4 class="col-sm-11" style="margin: 0px;">Edit Item</h4>
           		<a class="col-sm-1 pull-right faclose" href="#" onclick="$('#itemedit').hide(); return false;"><i class="fa fa-close"></i></a>	
           	</div>
-            
-            <div id="itemadd" class="form-horizontal">
-              
-              <!--{{#if editMode}}-->
-                <!--{{> quickForm collection="Items" id=updateItemId type="update" doc=edititem }}-->
-              <!--{{/if}}-->
-              
-            </div>
-          
-          </div>
-          
-            
-          
-          
-          <div class="col-md-12 borderbar">
-          	<div class="row">
-          		<h4 class="col-sm-11" style="margin: 0px;">Edit Item</h4>
-          		<a class="col-sm-1 pull-right faclose" href="#"><i class="fa fa-close"></i></a>	
-          	</div>
           	
-          	<div id="itemadd" class="form-horizontal">
-          		<div class="form-group">
-                    <label class="col-sm-1 control-label">Title</label>
-                    <div class="col-sm-7">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <input type="text" name="title" class="form-control" value="" placeholder="Iphone 6S">
-                            </div>
-                        </div>
-                    </div>
-                    <label class="col-sm-1 control-label">Price</label>
-                    <div class="col-sm-3">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <input type="text" name="price" class="form-control" value="" placeholder="500.00">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-1 control-label">Model</label>
-                    <div class="col-sm-5">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <input type="text" name="model" class="form-control" value="" placeholder="UN55JS7000FXZA">
-                            </div>
-                        </div>
-                    </div>
-                    <label class="col-sm-1 control-label">SKU</label>
-                    <div class="col-sm-5">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <input type="text" name="sku" class="form-control" value="" placeholder="4213306">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Photo</label>
-                    <div class="col-sm-10">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <input type="text" name="photo" class="form-control" value="" placeholder="Photo Url">
-                            </div>
-                        </div>
-                    </div>
+          	<div class="form-horizontal">
+          		<form method="POST" action="/employee/work">
+          		  
+            		<div class="form-group">
+                      
+                      <label class="col-sm-1 control-label">ID</label>
+                      <div class="col-sm-11">
+                          <div class="row">
+                              <div class="col-sm-12">
+                                  <input type="text" name="id" class="form-control" value="" placeholder="id" disabled>
+                              </div>
+                          </div>
+                      </div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Description</label>
-                    <div class="col-sm-10">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <textarea rows="5" style="width: 100%;" name="text"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            	
-                <div class="form-group">
-                	<div class="col-sm-12">
-                		<a href="#" class="btn btn-sm btn-fill btn-danger pull-right">Save</a>
-                	</div>	
-                </div>
+                      
+                      <label class="col-sm-1 control-label">Title</label>
+                      <div class="col-sm-7">
+                          <div class="row">
+                              <div class="col-sm-12">
+                                  <input type="text" name="title" class="form-control" value="" placeholder="Iphone 6S">
+                              </div>
+                          </div>
+                      </div>
+                      <label class="col-sm-1 control-label">Price</label>
+                      <div class="col-sm-3">
+                          <div class="row">
+                              <div class="col-sm-12">
+                                  <input type="text" name="price" class="form-control" value="" placeholder="500.00">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-1 control-label">Model</label>
+                      <div class="col-sm-5">
+                          <div class="row">
+                              <div class="col-sm-12">
+                                  <input type="text" name="model" class="form-control" value="" placeholder="UN55JS7000FXZA">
+                              </div>
+                          </div>
+                      </div>
+                      <label class="col-sm-1 control-label">SKU</label>
+                      <div class="col-sm-5">
+                          <div class="row">
+                              <div class="col-sm-12">
+                                  <input type="text" name="sku" class="form-control" value="" placeholder="4213306">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="itemimage">
+                      
+                  </div>
+                  
+                  <div class="form-group">
+                  	<div class="col-sm-12">
+                  		<button id="addnewimg" class="btn btn-sm btn-fill btn-info btn-block">Add New Image</button>
+                  	</div>	
+                  </div>
+                  
+                  <div class="form-group">
+                      <label class="col-sm-2 control-label">Description</label>
+                      <div class="col-sm-10">
+                          <div class="row">
+                              <div class="col-sm-12">
+                                  <textarea rows="5" style="width: 100%;" name="desc"></textarea>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              	
+                  <div class="form-group">
+                  	<div class="col-sm-12">
+                  		<a href="#" class="btn btn-sm btn-fill btn-danger pull-right">Save</a>
+                  	</div>	
+                  </div>
+              </form>
             </div>
           	
           </div>

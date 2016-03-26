@@ -65,3 +65,9 @@ Search.attachSchema(new SimpleSchema({
       }
   }
 }));
+
+Meteor.methods({
+   deleteSearch: function(id) {
+       Search.remove(id);
+   }
+});
