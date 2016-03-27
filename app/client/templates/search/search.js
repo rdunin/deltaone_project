@@ -25,10 +25,11 @@ Template.Search.helpers({
       var ser = Search.findOne({_id: sid, items: {$ne:null}});
       
       if(ser){
-        console.log(ser, "One");
+        //console.log(ser, "One");
         var item = Items.findOne({_id: ser.items});  
-        console.log([ser, item]);
+        //console.log([ser, item]);
       }
+      
       
       return {"search": ser, "item": item};
     }

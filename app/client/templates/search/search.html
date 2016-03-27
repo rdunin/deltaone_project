@@ -35,30 +35,30 @@
   					<div class="clearfix"></div>
   				</div>
   				
-  				{{#if 0 }}
+  				{{#if searchOne.search.query }}
   				<div class="x_content">
   
   					<div class="col-md-7 col-sm-7 col-xs-12">
   						<div class="product-image">
-  							<img src="img/prod1.jpg" alt="...">
+  							<img src="{{searchOne.item.images.[0].url}}" alt="...">
   						</div>
   					</div>
   
   					<div class="col-md-5 col-sm-5 col-xs-12">
   
   						<div class="">
-  							<h4 class="prod_title" style="margin-top: 5px;"><a href="one-item.html">Samsung - 55" - LED - 4K Ultra HD TV</a></h4>
-  							<div class="sku-model"><ul><li class="model-number"><span class="sku-label">Model:</span> <span class="sku-value" id="model-value" itemprop="model">UN55JS7000FXZA</span></li><li class="sku-id"><span class="sku-label">SKU:</span> <span class="sku-value" id="sku-value" itemprop="productID">4213306</span></li></ul></div>
-  							<div class="short-description" style="margin-top: 20px;"><ul><li>2160p resolution</li><li>Motion Rate 120</li><li>Smart TV, Samsung Smart apps, Web browser included</li></ul></div>
+  							<h4 class="prod_title" style="margin-top: 5px;"><a href="one-item.html">{{searchOne.item.title}}</a></h4>
+  							<div class="sku-model"><ul><li class="model-number"><span class="sku-label">Model:</span> <span class="sku-value" id="model-value" itemprop="model">{{searchOne.item.model}}</span></li><li class="sku-id"><span class="sku-label">SKU:</span> <span class="sku-value" id="sku-value" itemprop="productID">{{searchOne.item.sku}}</span></li></ul></div>
+  							<div class="short-description" style="margin-top: 20px;">{{searchOne.item.desc}}</div>
   							<div class="product_price">
-  								<h1 class="price">$699.00</h1>
+  								<h1 class="price">${{searchOne.item.price}}.00</h1>
   								<br>
   							</div>
   						</div>
   
   						<div class="">
-  							<a href="checkout.html" class="btn btn-lg btn-fill btn-danger">Buy Now</a>
-  							<a href="one-item.html" class="btn btn-lg btn-danger">More info</a>
+  							<a href="/order/{{searchOne.item._id}}" class="btn btn-lg btn-fill btn-danger">Buy Now</a>
+  							<a href="/item/{{searchOne.item._id}}" class="btn btn-lg btn-danger">More info</a>
   						</div>
   
   					</div>

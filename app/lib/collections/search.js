@@ -69,5 +69,10 @@ Search.attachSchema(new SimpleSchema({
 Meteor.methods({
    deleteSearch: function(id) {
        Search.remove(id);
+   },
+   AddSearchItem: function(sid, iid) {
+      Search.update(sid, {
+        $set: {items: iid}
+      });
    }
 });

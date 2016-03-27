@@ -23,6 +23,12 @@ Router.route('/compare', {
   where: 'client'
 });
 
+Router.route('/item/:_id', {
+  name: 'item',
+  controller: 'ItemController',
+  where: 'client'
+});
+
 Router.route('/employee/work', {
   name: 'EmployeeWork',
   controller: 'EmployeeController',

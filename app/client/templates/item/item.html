@@ -1,0 +1,134 @@
+<template name="Item">
+  {{> Navbar}}
+    
+    <div class="space"></div>
+    
+    <div class="row" style="margin: 15px;">
+    	<div class="container">
+    	
+    		<div class="col-md-12 col-sm-12 col-xs-12">
+    			<div class="x_panel">
+    				<div class="x_content">
+    
+    					<div class="col-md-7 col-sm-7 col-xs-12" style="margin-bottom: 40px;">
+    						<div class="product-image">
+    							<img src="{{item.images.[0].url}}" alt="...">
+    						</div>
+    						<div class="product_gallery">
+    							
+                  {{#each item.images}}
+    							<a>
+    								<img src="{{url}}">
+    							</a>
+    							{{/each}}
+    							
+    						</div>
+    						<div class="col-md-12" style="margin-top: 20px;">
+    							<p></p>
+    						</div>
+    					</div>
+    
+    					<div class="col-md-5 col-sm-5 col-xs-12" style="margin-bottom: 40px; border:0px solid #e5e5e5;">
+    
+    						<h4 class="prod_title" style="margin-top: 5px;"><b>{{item.title}}</b></h4>
+    						<div class="sku-model"><ul><li class="model-number"><span class="sku-label">Model:</span> <span class="sku-value" id="model-value" itemprop="model">{{item.model}}</span></li><li class="sku-id"><span class="sku-label">SKU:</span> <span class="sku-value" id="sku-value" itemprop="productID">{{item.sku}}</span></li></ul></div>
+    						<div class="short-description" style="margin-top: 20px;">{{item.desc}}</div>
+    						<br>
+    
+    						<div class="">
+    							<div class="product_price">
+    								
+    								<div class="col-md-12">
+    									<a href="#" onclick="$('.hide-row').toggle('slow'); $('.line').toggleClass('top'); return false;" class="pull-right"><i style="font-size: 30px;" class="fa fa-question-circle"></i></a>
+    									<table class="table borderless" style="margin-bottom: 0;">
+    									  <thead>
+    										<tr>
+    											<th>&nbsp;</th>
+    											<th><img src="/img/logo.png" width="50" ></th>
+    											<th><img src="/img/bestbuy.jpg" width="50" ></th>
+    											<th><img src="/img/amazon.jpg" width="50" ></th>
+    										</tr>
+    									  </thead>
+    									  <tbody> 
+    										<tr>
+    											<th scope="row">&nbsp;</th> 
+    											<td>{{item.price}}.00</td>
+    											<td>$754.00</td>
+    											<td>$747.00</td> 
+    										</tr>
+    										<tr class="hide-row">
+    											<th scope="row">Tax</th>
+    											<td>0%</td>
+    											<td>10%</td>
+    											<td>10%</td>
+    										</tr>
+    										<tr class="hide-row">
+    											<th scope="row">Shipping</th>
+    											<td>$0.00</td>
+    											<td>$0.00</td>
+    											<td>$0.00</td>
+    										</tr>
+    										<tr class="hide-row">
+    											<th scope="row">Price <br>guarantee</th>
+    											<td><i class="fa fa-check fayes"></i></td>
+    											<td><i class="fa fa-close fano"></i></td>
+    											<td><i class="fa fa-close fano"></i></td>
+    										</tr>
+    										<tr class="hide-row">
+    											<th scope="row">Post purchase <br>protection</th>
+    											<td><i class="fa fa-check fayes"></i></td>
+    											<td><i class="fa fa-close fano"></i></td>
+    											<td><i class="fa fa-close fano"></i></td>
+    										</tr>
+    										<tr>
+    											<td colspan="4"><a href="#" onclick="$('.hide-row').toggle('slow'); $('.line').toggleClass('top'); return false;" ><p style="position: absolute; left: 39%; bottom: -29px; color: #fff; z-index: 2;" class="text-center">Compare</p><hr class="line"></a></td>
+    										</tr>
+    									  </tbody>
+    									</table>
+    								</div>
+    								
+    								<h1 class="price col-md-12"><span>Best price</span><br>${{item.price}}.00</h1>
+    								<br> 
+    							</div>
+    						</div>
+    
+    						<div class="">
+    							<a href="/order/{{item._id}}" class="btn btn-lg btn-fill btn-danger">Buy Now</a>
+    						</div>
+    
+    					</div>
+    
+    
+    					<div class="col-md-12 col-sm-12 col-xs-12">
+    
+    						<div class="" role="tabpanel" data-example-id="togglable-tabs">
+    							<ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+    								<li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Info</a>
+    								</li>
+    								<li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Rewiev</a>
+    								</li>
+    								<li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Other</a>
+    								</li>
+    							</ul>
+    							<div id="myTabContent" class="tab-content">
+    								<div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+    									<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
+    								</div>
+    								<div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+    									<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip</p>
+    								</div>
+    								<div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+    									<p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk </p>
+    								</div>
+    							</div>
+    						</div>
+    
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+  
+  {{> Footer}}
+</template>

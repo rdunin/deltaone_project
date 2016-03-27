@@ -30,7 +30,7 @@
         </div>
         
         
-        <div class="col-sm-9 col-sm-offset-3 col-md-7 col-md-offset-3 adminmain">
+        <div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 adminmain">
           <div class="col-md-12 borderbar">
           	<b>Users online:</b> {{usersOnlineCount}}
           	<b>Querys:</b> {{SearchCount}}
@@ -181,7 +181,7 @@
 		  
 		</div>
 		
-		<div class="col-md-2 sidebaright">
+		<div class="col-md-3 sidebaright">
           	<div class="form-group">
           		<input type="text" name="query" class="form-control" placeholder="Search item">
           		<br>
@@ -192,13 +192,18 @@
             <table class="table table-hover">
               <thead>
                 <tr>
+                  <th></th>
                   <th>Title</th>
                   <th><i class="fa fa-usd"></i></th>
                 </tr>
               </thead>
               <tbody>
                 {{#each items}}
-                  <tr class="itemid">
+                  <tr class="">
+                    <td>
+                      <button class="btn btn-primary btn-xs sitem"><i class="fa fa-paper-plane"></i></button>
+                      <button class="btn btn-primary btn-xs itemid"><i class="fa fa-pencil"></i></button>
+                    </td>
                     <td>{{title}}</td>
                     <td>{{price}}</td>
                   </tr>

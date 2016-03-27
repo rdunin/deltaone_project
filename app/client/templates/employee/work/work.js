@@ -1,5 +1,20 @@
 var itemid = "9EDrcayZa9x6axA3c";
 var imags = 0;
+var count = 0;
+
+function searchtime() {
+   
+   Tracker.autorun(function(thisComp) {
+          Chronos.liveUpdate();
+          $('#querywork dd:eq(2)').text(count);
+          count++;
+          //thisComp.stop();
+   });
+   
+}
+
+searchtime();
+
 /*****************************************************************************/
 /* Work: Event Handlers */
 /*****************************************************************************/
@@ -55,6 +70,8 @@ Template.Work.events({
        $('#querywork dd:eq(1)').text(userStat);
        $('#querywork dd:eq(2)').html(moment().diff(this.createdAt, 'seconds'));
        
+       count = moment().diff(this.createdAt, 'seconds');
+      
        $('#querywork').find('[name=queryid]').val(this._id);
        $('#querywork').find('[name=itemid]').val(this.items);
        
@@ -65,6 +82,15 @@ Template.Work.events({
        var qid = $(e.currentTarget).attr("qid");
        Meteor.call('deleteSearch', qid);
        $('#querywork').hide();
+    },
+    'click .sitem': function(e){
+       if($('#querywork').is(":visible")){
+          var sid = $('#querywork').find('[name=queryid]').val();
+          Meteor.call('AddSearchItem', sid, this._id);
+          $('#querywork').hide();
+       }else{
+          alert("Please select search query!");
+       }
     }
 });
 
