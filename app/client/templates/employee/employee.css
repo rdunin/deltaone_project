@@ -50,7 +50,7 @@
     left: 0;
     z-index: 1000;
     display: block;
-    padding: 20px;
+    padding-top: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: #f5f5f5;
@@ -63,7 +63,7 @@
     right: 0;
     z-index: 1000;
     display: block;
-    padding: 20px;
+    padding-top: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: #f5f5f5;
@@ -154,6 +154,11 @@ margin-top: 40px;
 .fatrash {
     padding: 4px;
     text-align: center;
+}
+
+.itemtrash{
+  padding: 4px;
+  text-align: center;
 }
 
 .ftop{

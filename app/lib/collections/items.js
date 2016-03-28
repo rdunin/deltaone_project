@@ -1,5 +1,10 @@
 Items = new Mongo.Collection('items');
 
+ItemsIndex = new EasySearch.Index({
+  collection: Items,
+  fields: ['title', 'desc'],
+  engine: new EasySearch.Minimongo()
+});
 
 if (Meteor.isServer) {
   Items.allow({
@@ -48,7 +53,8 @@ Items.attachSchema(new SimpleSchema({
     optional: true,
   },
   images: {
-      type: [Images]  
+      type: [Images],
+      optional: true,
   },
   desc: {
     type: String,
@@ -74,3 +80,9 @@ Items.attachSchema(new SimpleSchema({
       }
   }
 }));
+
+Meteor.methods({
+   deleteItem: function(id) {
+       Items.remove(id);
+   }
+});

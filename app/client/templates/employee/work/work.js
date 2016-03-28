@@ -15,6 +15,13 @@ function searchtime() {
 
 searchtime();
 
+Template.registerHelper("searchbutton", function() {
+    return {
+      placeholder: "Search item...",
+      class: "form-control"
+    };
+});
+
 /*****************************************************************************/
 /* Work: Event Handlers */
 /*****************************************************************************/
@@ -34,7 +41,7 @@ Template.Work.events({
          //console.log(this.images);
          imags = this.images.length;
          for (var i = 0; i < this.images.length; i++) {
-            var img = "<div class='form-group'> <label class='col-sm-2 control-label'>Image</label> <div class='col-sm-10'> <div class='row'> <div class='col-sm-12'> <input type='text' name='images."+i+".url' class='form-control' value='"+this.images[i].url+"' placeholder='Images Url'> </div> </div> </div> </div>";
+            var img = "<div class='form-group'> <label class='col-sm-2 control-label'>Image</label> <div class='col-sm-8'> <div class='row'> <div class='col-sm-12'> <input type='text' name='images."+i+".url' class='form-control' value='"+this.images[i].url+"' placeholder='Images Url'> </div> </div> </div> <div class='col-sm-2'> <button type='button' class='btn btn-sm btn-fill btn-info remove-item'><span class='glyphicon glyphicon-minus'></span></button> </div> </div>";
             $('.itemimage').append(img);    
          }
 
@@ -45,8 +52,12 @@ Template.Work.events({
         //$('#itemedit').find('[name=images]').val();
         $('#itemedit').find('[name=desc]').val(this.desc);
     },
-    'click #addnewimg': function(){
-         var img = "<div class='form-group'> <label class='col-sm-2 control-label'>Image</label> <div class='col-sm-10'> <div class='row'> <div class='col-sm-12'> <input type='text' name='images."+imags+".url' class='form-control' value='' placeholder='Images Url'> </div> </div> </div> </div>";
+    'click .remove-item': function(e){
+        $(e.currentTarget).parent().parent().remove();
+    },
+    'click #addnewimg': function(event){
+         event.preventDefault();
+         var img = "<div class='form-group'> <label class='col-sm-2 control-label'>Image</label> <div class='col-sm-8'> <div class='row'> <div class='col-sm-12'> <input type='text' name='images."+imags+".url' class='form-control' value='' placeholder='Images Url'> </div> </div> </div> <div class='col-sm-2'> <button type='button' class='btn btn-sm btn-fill btn-info remove-item'><span class='glyphicon glyphicon-minus'></span></button> </div> </div>";
          $('.itemimage').append(img);    
          imags++;
     },
@@ -83,6 +94,11 @@ Template.Work.events({
        Meteor.call('deleteSearch', qid);
        $('#querywork').hide();
     },
+    'click .itemtrash': function(e){
+        var itemid = $('#itemedit').find('[name=id]').val();
+        Meteor.call('deleteItem', itemid);
+       $('#itemedit').hide();
+    },
     'click .sitem': function(e){
        if($('#querywork').is(":visible")){
           var sid = $('#querywork').find('[name=queryid]').val();
@@ -91,6 +107,45 @@ Template.Work.events({
        }else{
           alert("Please select search query!");
        }
+    },
+    'submit .itemform': function(event){
+        event.preventDefault();
+        
+        var id = $('#itemedit').find('[name=id]').val();
+        var title = $('#itemedit').find('[name=title]').val();
+        var price = $('#itemedit').find('[name=price]').val();
+        var model = $('#itemedit').find('[name=model]').val();
+        var sku = $('#itemedit').find('[name=sku]').val();
+        var desc = $('#itemedit').find('[name=desc]').val();
+        
+        var countimg = $('.itemimage .form-group').length;
+        var img = [];
+        //var img = new Object();
+        //{{images.[0].url
+         
+         for (var i = 0; i < countimg; i++) {
+            //$('.itemimage').append(img);    
+             img[i] = {url: $('.itemimage .form-group input:eq('+i+')').val()};
+         }
+        
+        //console.log(img);
+        
+        Items.update(id, {
+            $set: {
+                title: title,
+                price: price,
+                model: model,
+                sku: sku,
+                desc: desc,
+                images: img
+            }
+        });
+        
+        $('#itemedit').hide();
+    },
+    'change .searchquery': function (e) {
+      var itemsearch = $(e.currentTarget).val();
+      Session.set('searchquery', itemsearch);
     }
 });
 
@@ -133,6 +188,22 @@ Template.Work.helpers({
    items: ()=> {
       return Items.find({});
    },
+   itemIndex: () => ItemsIndex,
+   filteredItem: function () {
+      var query = Session.get('searchquery');
+      
+    //   if(query.length < 1){
+    //     query = "/ /";
+    //   }else{
+    //     query = "/"+query+"/";    
+    //   }
+      
+      //console.log(Items.find({ $or: [ { title: query }, { desc: query } ]}).fetch());
+      //return Items.find({title: query});
+      //Items.find({}, {sort: {score: -1, name: 1} })
+      //return Items.find({ title: new RegExp(query) });
+      return Items.find({ $or: [ { title: new RegExp(query) }, { desc: new RegExp(query) } ]});
+    },
    updateItemId: function(){
       //console.log(itemid);
       return itemid;

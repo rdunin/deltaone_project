@@ -91,12 +91,13 @@
           <div id="itemedit" class="col-md-12 borderbar" style="display:none;">
             
           	<div class="row">
-          		<h4 class="col-sm-11" style="margin: 0px;">Edit Item</h4>
-          		<a class="col-sm-1 pull-right faclose" href="#" onclick="$('#itemedit').hide(); return false;"><i class="fa fa-close"></i></a>	
+          		<h4 class="col-sm-10" style="margin: 0px;">Edit Item</h4>
+          		<a class="col-sm-1 pull-right faclose" href="#" onclick="$('#itemedit').hide(); return false;"><i class="fa fa-close"></i></a>
+          		<a class="col-sm-1 pull-right itemtrash" href="#"><i class="fa fa-trash"></i></a>
           	</div>
           	
           	<div class="form-horizontal">
-          		<form method="POST" action="/employee/work">
+          		<form method="POST" action="/employee/work" class="itemform">
           		  
             		<div class="form-group">
                       
@@ -154,7 +155,7 @@
                   
                   <div class="form-group">
                   	<div class="col-sm-12">
-                  		<button id="addnewimg" class="btn btn-sm btn-fill btn-info btn-block">Add New Image</button>
+                  		<a href="#" id="addnewimg" class="btn btn-sm btn-fill btn-info btn-block">Add New Image</a>
                   	</div>	
                   </div>
                   
@@ -171,7 +172,7 @@
               	
                   <div class="form-group">
                   	<div class="col-sm-12">
-                  		<a href="#" class="btn btn-sm btn-fill btn-danger pull-right">Save</a>
+                  	  <button class="btn btn-sm btn-fill btn-danger pull-right">Update</button>
                   	</div>	
                   </div>
               </form>
@@ -183,7 +184,8 @@
 		
 		<div class="col-md-3 sidebaright">
           	<div class="form-group">
-          		<input type="text" name="query" class="form-control" placeholder="Search item">
+          		<!--<input type="text" name="query" class="form-control searchquery" placeholder="Search item">-->
+          		{{> EasySearch.Input index=itemIndex attributes=searchbutton }}
           		<br>
           		<a href="#" class="btn btn-md btn-fill btn-block btn-danger" onclick="$('#itemadds').toggleClass('hidden'); return false;">Add Item</a>
           	</div>
@@ -198,7 +200,7 @@
                 </tr>
               </thead>
               <tbody>
-                {{#each items}}
+                {{#EasySearch.Each index=itemIndex }}
                   <tr class="">
                     <td>
                       <button class="btn btn-primary btn-xs sitem"><i class="fa fa-paper-plane"></i></button>
@@ -207,7 +209,24 @@
                     <td>{{title}}</td>
                     <td>{{price}}</td>
                   </tr>
-                {{/each}}
+                {{/EasySearch.Each}}
+                
+                {{> EasySearch.LoadMore index=itemIndex}}
+
+                {{#EasySearch.IfNoResults index=itemIndex}}
+                  <div class="no-results">No results found!</div>
+                {{/EasySearch.IfNoResults}}
+                
+                <!--{{#each filteredItem}}-->
+                <!--  <tr class="">-->
+                <!--    <td>-->
+                <!--      <button class="btn btn-primary btn-xs sitem"><i class="fa fa-paper-plane"></i></button>-->
+                <!--      <button class="btn btn-primary btn-xs itemid"><i class="fa fa-pencil"></i></button>-->
+                <!--    </td>-->
+                <!--    <td>{{title}}</td>-->
+                <!--    <td>{{price}}</td>-->
+                <!--  </tr>-->
+                <!--{{/each}}-->
               </tbody>
             </table>
           </div>
