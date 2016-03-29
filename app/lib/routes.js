@@ -35,3 +35,10 @@ Router.route('/employee/work', {
   action: 'work',
   where: 'client'
 });
+
+Router.route('/employee/items', {
+  name: 'EmployeeItems',
+  controller: 'EmployeeController',
+  action: 'items',
+  where: 'client'
+});

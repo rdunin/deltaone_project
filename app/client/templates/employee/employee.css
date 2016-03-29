@@ -162,7 +162,7 @@ margin-top: 40px;
 }
 
 .ftop{
-	margin-top: 35px;
+	margin-top: 85px;
 }
 
 .marg-0{
@@ -229,4 +229,9 @@ margin-top: 40px;
 
 .panel-default .panel-heading{
   box-shadow: none !important;
+}
+
+.table-avatar{
+  max-width: 100px;
+  max-height: 100px;
 }

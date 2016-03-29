@@ -16,6 +16,11 @@ EmployeeController = RouteController.extend({
     this.render('Work', {});
   },
   
+  // Work Action
+  items: function() {
+    this.render('Eitems', {});
+  },
+  
   // Subscriptions or other things we want to "wait" on. This also
   // automatically uses the loading hook. That's the only difference between
   // this option and the subscriptions option above.

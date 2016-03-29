@@ -1,0 +1,72 @@
+<template name="Eitems">
+  {{> EmpNavbar}}
+  
+  <div class="container-fluid">
+      <div class="row">
+      	
+      	<div class="container ftop">
+  			<div class="col-md-12" style="margin-bottom: 15px;">
+  			  <div class="col-md-4 pull-left">
+  			    {{> EasySearch.Input index=itemsIndex attributes=searchbutton }}
+  			  </div>
+	  		  <div class="col-md-2 pull-right">
+	  			<button class="btn btn-md btn-fill btn-block btn-danger" onclick="$('#itemadds').toggleClass('hidden'); return false;">Add New</button>
+	  		  </div>
+	  		</div>
+	  		
+	  		<div id="itemadds" class="col-md-8 col-md-offset-2 hidden" style="padding: 20px; border: 2px solid #ccc; margin-top: 20px; margin-bottom: 20px;">
+          	
+	          	<div class="row">
+	          		<h4 class="col-sm-11" style="margin: 0px;">Add Item</h4>
+	          		<a class="col-sm-1 pull-right faclose" href="#" onclick="$('#itemadds').toggleClass('hidden'); return false;"><i class="fa fa-close"></i></a>	
+	          	</div>
+	            
+	            <div id="itemadd" class="form-horizontal">
+	              {{> quickForm collection="Items" id="insertItemsForm" type="insert" }}
+	            </div>
+          
+          	</div>
+	  		
+			    <table class="table">
+			        <thead>
+			            <tr>
+			                <th>Photo</th>
+			                <th>Title</th>
+			                <th>Price</th>
+			                <th>Model</th>
+			                <th class="text-right">Action</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			          {{#EasySearch.Each index=itemsIndex }}
+			        	  <tr>
+			            	  <td>
+  			            	  <a href="/item/:id">
+  			            	    {{#if images.[0].url}}
+            							  <img class="table-avatar" src="{{images.[0].url}}">
+            							{{else}}
+            							  <img class="table-avatar" src="/img/no_image.jpg">
+            							{{/if}}
+  			            	  </a>
+			            	  </td>
+			                <td>{{title}}</td>
+			                <td>{{price}}</td>
+			                <td>{{model}}</td>
+			                <th class="text-right">
+			                	<a href="/item/{{_id}}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+			            		<a href="#" onclick="$('.item_{{_id}}').toggleClass('hidden'); return false;" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+			            	</th>
+			            </tr>
+			            <tr class="item_{{_id}} hidden">
+			            	<td colspan="5">
+			            	{{> quickForm collection="Items" id=updateItemId type="update" doc=this autosave=true }}
+			            	</td>
+			            </tr>
+			           {{/EasySearch.Each}}
+			         </tbody>
+			    </table>
+			</div>
+     </div>
+</div>
+  
+</template>

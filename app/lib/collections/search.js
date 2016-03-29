@@ -70,9 +70,25 @@ Meteor.methods({
    deleteSearch: function(id) {
        Search.remove(id);
    },
+   NewSearch:function(id){
+     Search.update(id, {
+        $set: {items: null}
+      });
+   },
    AddSearchItem: function(sid, iid) {
       Search.update(sid, {
         $set: {items: iid}
       });
+      var aitem = Items.findOne(iid);
+      
+      if(typeof aitem.answers == 'undefined'){
+        var count = 1;
+      }else{
+        var count = aitem.answers + 1;
+      }
+      
+      Items.update(iid,{
+        $set: {answers: count}
+      })
    }
 });

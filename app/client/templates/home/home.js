@@ -19,6 +19,9 @@ Template.Home.events({
             user: Meteor.userId()
         });
         
+        
+        Meteor.call('sendSms');
+        
         Router.go('search', {}, {query: 'id='+sid});
     },
     'click .employee' : function(){

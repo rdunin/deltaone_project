@@ -20,5 +20,8 @@ Meteor.publish("userStatus", function() {
 });
 
 Meteor.publish('items', function () {
-  return Items.find({});
+  //return Items.find({});
+  return Items.find({}, {
+    sort: {'answers': -1}
+  });
 });

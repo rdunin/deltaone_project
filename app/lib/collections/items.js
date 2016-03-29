@@ -3,7 +3,9 @@ Items = new Mongo.Collection('items');
 ItemsIndex = new EasySearch.Index({
   collection: Items,
   fields: ['title', 'desc'],
-  engine: new EasySearch.Minimongo()
+  engine: new EasySearch.Minimongo({
+    sort: function() { return {answers: -1}; }
+  })
 });
 
 if (Meteor.isServer) {
@@ -68,6 +70,15 @@ Items.attachSchema(new SimpleSchema({
         class: "desc"
       }
     }
+  },
+  answers:{
+      type: Number,
+      label: "Answers",
+      min: 0,
+      optional: true,
+      autoform: {
+            type: "hidden"
+      }
   },
   createdAt:{
       type: Date,

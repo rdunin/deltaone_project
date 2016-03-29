@@ -10,8 +10,8 @@ Template.Item.events({
 Template.Item.helpers({
    //var sid = Router.current().params.query.id;
    itemsq: ()=> {
-      console.log(this._id);
-      console.log(Router.current().params._id);
+      //console.log(this._id);
+      //console.log(Router.current().params._id);
       //var sid = Router.current().params.query.id;
       //return Search.find({user: this.userId, items: { $exists: true, $ne: [] }});
       //, items: {$ne:null}
