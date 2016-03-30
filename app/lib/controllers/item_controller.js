@@ -26,6 +26,7 @@ ItemController = RouteController.extend({
   data: function () {
     //console.log(this.params._id);
     return {
+        //Get Item ID from URL and Find Item in DataBase
         item: Items.findOne(this.params._id),
         itemId: this.params._id
     };

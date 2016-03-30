@@ -1,6 +1,7 @@
+//Create Search Collection
 Search = new Mongo.Collection('search');
 
-
+//Give Access to Collection
 if (Meteor.isServer) {
   Search.allow({
     insert: function (userId, doc) {
@@ -18,6 +19,7 @@ if (Meteor.isServer) {
   
 }
 
+//Create Mongo Schema
 Search.attachSchema(new SimpleSchema({
   query: {
     type: String,
@@ -38,7 +40,7 @@ Search.attachSchema(new SimpleSchema({
         return 'Created'
     },
     autoform: {
-        //type: "hidden"
+        type: "hidden"
     }
   },
   user: {
@@ -66,6 +68,7 @@ Search.attachSchema(new SimpleSchema({
   }
 }));
 
+//Add Method
 Meteor.methods({
    deleteSearch: function(id) {
        Search.remove(id);

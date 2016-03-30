@@ -1,4 +1,4 @@
-EmployeeController = RouteController.extend({
+OrderController = RouteController.extend({
   
   // A place to put your subscriptions
   // this.subscribe('items');
@@ -6,22 +6,6 @@ EmployeeController = RouteController.extend({
   // this.subscribe('item', this.params._id).wait();
   
   subscriptions: function() {
-    //Subscription for Data from Publish
-    this.subscribe('searchemp');
-    this.subscribe('items');
-    this.subscribe('userStatus');
-  },
-  
-  // Work Action
-  work: function() {
-    //Render Main Employee Work Template
-    this.render('Work', {});
-  },
-  
-  // Work Action
-  items: function() {
-    //Render Items Employee Template
-    this.render('Eitems', {});
   },
   
   // Subscriptions or other things we want to "wait" on. This also
@@ -44,16 +28,7 @@ EmployeeController = RouteController.extend({
   // You can provide any of the hook options
   
   onRun: function () {
-    //Check Admin Role
-    if(Meteor.user()){
-      if(Roles.userIsInRole(Meteor.userId(), 'admin')){
-        this.next();    
-      }else{
-        Router.go('home');
-      }
-    }else{
-      Router.go('home');
-    }
+    this.next();
   },
   onRerun: function () {
     this.next();

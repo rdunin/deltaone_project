@@ -1,5 +1,7 @@
+//Create Items Collection
 Items = new Mongo.Collection('items');
 
+//Add EasySearch to Collection for IndexSearch
 ItemsIndex = new EasySearch.Index({
   collection: Items,
   fields: ['title', 'desc'],
@@ -8,6 +10,7 @@ ItemsIndex = new EasySearch.Index({
   })
 });
 
+//Give Access to Collection
 if (Meteor.isServer) {
   Items.allow({
     insert: function (userId, doc) {
@@ -25,6 +28,7 @@ if (Meteor.isServer) {
 
 }
 
+//Add Images
 Images = new SimpleSchema({
     url:{
         type: String,
@@ -33,6 +37,7 @@ Images = new SimpleSchema({
     }
 });
 
+//Create Mongo Schema
 Items.attachSchema(new SimpleSchema({
   title: {
     type: String,
@@ -92,6 +97,7 @@ Items.attachSchema(new SimpleSchema({
   }
 }));
 
+//Add Method
 Meteor.methods({
    deleteItem: function(id) {
        Items.remove(id);

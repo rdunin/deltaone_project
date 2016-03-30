@@ -1,27 +1,23 @@
 /*****************************************************************************/
-/* Eitems: Event Handlers */
+/* Success: Event Handlers */
 /*****************************************************************************/
-Template.Eitems.events({
+Template.Success.events({
 });
 
 /*****************************************************************************/
-/* Eitems: Helpers */
+/* Success: Helpers */
 /*****************************************************************************/
-Template.Eitems.helpers({
-   itemsIndex: () => ItemsIndex,
-   updateItemId: function(){
-      return this._id;
-   }
+Template.Success.helpers({
 });
 
 /*****************************************************************************/
-/* Eitems: Lifecycle Hooks */
+/* Success: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Eitems.onCreated(function () {
+Template.Success.onCreated(function () {
 });
 
-Template.Eitems.onRendered(function () {
+Template.Success.onRendered(function () {
 });
 
-Template.Eitems.onDestroyed(function () {
+Template.Success.onDestroyed(function () {
 });

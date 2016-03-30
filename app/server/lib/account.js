@@ -5,7 +5,7 @@ ServiceConfiguration.configurations.remove({
     service: 'facebook'
 });
 
-// Facebook Config
+//Add Facebook Config
 ServiceConfiguration.configurations.insert({
     service: 'facebook',
     appId: "1415166228770419",
@@ -17,7 +17,7 @@ ServiceConfiguration.configurations.remove({
   service: "google"
 });
 
-// Google Config
+//Add Google Config
 ServiceConfiguration.configurations.insert({
   service: "google",
   clientId: "386193664948-qiodul53qeq69sp15vdamfjs84uppso5.apps.googleusercontent.com",
@@ -26,16 +26,13 @@ ServiceConfiguration.configurations.insert({
 
 // When User Sign-Up
 Accounts.onCreateUser(function(options, user) {
-    console.log(user);
-    //console.log(user.emails['address']);
-    
     
     if(typeof user.profile === "undefined"){
         
         console.log("ItsUser");
         options.profile['guest'] = false;
-        var role = ['user','admin']; // For add User and Admin roles
-        //var role = ['user']; //Add Only User Roles
+        //var role = ['user','admin']; // For add User and Admin roles
+        var role = ['user']; //Add Only User Roles
         user.roles = role
         
         
@@ -100,7 +97,7 @@ Accounts.onCreateUser(function(options, user) {
         }
         
     }else{
-        console.log("ItsGuest");
+        //Can Work When Guest Sign-Up
     }
     
     

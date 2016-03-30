@@ -30,6 +30,7 @@ Template.Navbar.onCreated(function () {
 });
 
 Template.Navbar.onRendered(function () {
+   //Check User Role and if user Log in add Avatar
    if (Roles.subscription.ready()){
       if(Roles.userIsInRole(Meteor.userId(), 'user')){
          console.log("Add avatar");
