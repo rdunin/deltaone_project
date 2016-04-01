@@ -1645,7 +1645,13 @@ hr{
 }
 
 #checkout-page{
-	margin-top:20px; margin-bottom: 20px;
+	margin-top:0px; 
+	margin-bottom: 20px;
+}
+
+#profile-page{
+    margin-top:20px; 
+	margin-bottom: 20px;
 }
 
 .liner span{
@@ -2126,6 +2132,12 @@ dl {
 #login-buttons-edit-profile{
     color: #FF3B30;
     border-color: #fff;
+}
+
+#login-buttons-edit-profile:hover,#login-buttons-edit-profile:active,#login-buttons-edit-profile:focus {
+    color: #FF3B30;
+    background-color: #fff;
+    border-color: #FF3B30;
 }
 
 .btn-Facebook{

@@ -43,3 +43,24 @@ Router.route('/employee/items', {
   action: 'items',
   where: 'client'
 });
+
+//Router Orders Page
+Router.route('/orders', {
+  name: 'Orders',
+  controller: 'OrderController',
+  where: 'client'
+});
+
+//Router Checkout Page
+Router.route('/checkout', {
+  name: 'Checkout',
+  controller: 'CheckoutController',
+  where: 'client'
+});
+
+//Router Profile Page
+Router.route('/profile', {
+  name: 'Profile',
+  controller: 'ProfileController',
+  where: 'client'
+});

@@ -1,0 +1,179 @@
+<template name="Profile">
+  {{> Navbar}}
+  
+  <div class="space"></div>
+
+  <section id="profile-page">
+      <div class="container">
+      	
+      	<div class="col-md-8 col-md-offset-2">
+      	
+      	<div class="col-md-12">
+      		<div class="billing-address">
+                  <label class="liner">
+                  	Personal info
+                  	<span><a href="#" onclick="$('#personaledit').toggle(); $('#personal').toggle(); return false;" >Edit</a></span>
+                  </label>
+                  	
+                  	<div id="personaledit" class="form-horizontal hide-row">
+  	                    <div class="form-group">
+  	                        <label class="col-sm-3 control-label">E-mail</label>
+  	                        <div class="col-sm-9">
+  	                            <input type="email" name="email" class="form-control" value="deltaone@delta.com" placeholder="Email" disabled="">
+  	                        </div>
+  	                    </div>
+  	                    <div class="form-group">
+  	                        <label class="col-sm-3 control-label">Password</label>
+  	                        <div class="col-sm-9">
+  	                            <input type="password" name="password" class="form-control" value="" placeholder="Password">
+  	                        </div>
+  	                    </div>
+  	                    <div class="form-group">
+                      		<a href="#" class="btn btn-sm btn-fill btn-danger pull-right">Save</a>	
+                      	</div>
+  	                </div>
+                  
+  	                <dl id="personal" class="dl-horizontal">
+  	                    <dt>Email</dt>
+  	                    <dd>deltaone@delta.com</dd>
+  	                    <dt>Password</dt>
+  	                    <dd>**********</dd>
+  	                </dl>
+                  
+              </div>
+      	</div>
+      	
+      	
+      	
+          <div class="col-md-12">
+              <div class="billing-address">
+                  <label class="liner">
+                  	Shipping address
+                  	<span><a href="#" onclick="$('#shippingedit').toggle(); $('#shipping').toggle(); console.log($(this).text()); return false;" >Edit</a></span>
+                  </label>
+                  
+                  <div id="shippingedit" class="form-horizontal hide-row">
+                  	<div class="form-group">
+                          <label class="col-sm-3 control-label">First and Last Name</label>
+                          <div class="col-sm-9">
+                              <div class="row">
+                                  <div class="col-sm-6">
+                                      <input type="text" name="first_name" class="form-control" value="John" placeholder="First Name">
+                                  </div>
+                                  <div class="col-sm-6">
+                                      <input type="text" name="last_name" class="form-control" value="Connor" placeholder="Last Name">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-3 control-label">Address and Town</label>
+                          <div class="col-sm-9">
+                              <div class="row">
+                                  <div class="col-sm-6">
+                                      <input type="text" name="first_name" class="form-control" value="Malbourne street 98" placeholder="Address">
+                                  </div>
+                                  <div class="col-sm-6">
+                                      <input type="text" name="last_name" class="form-control" value="San Francisco" placeholder="Town">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-3 control-label">Postcode / Zip</label>
+                          <div class="col-sm-9">
+                              <div class="row">
+                                  <div class="col-sm-12">
+                                      <input type="text" name="first_name" class="form-control" value="90804" placeholder="Address">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-3 control-label">Phone Number</label>
+                          <div class="col-sm-9">
+                              <input type="text" name="phone" value="" class="form-control" placeholder="Phone Number">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                      	<a href="#" class="btn btn-sm btn-fill btn-danger pull-right">Save</a>	
+                      </div>
+                  </div>
+                  
+                  <dl id="shipping" class="dl-horizontal">
+                      <dt>First Name</dt>
+                      <dd>John</dd>
+                      <dt>Last Name</dt>
+                      <dd>Connor</dd>
+                      <dt>Address</dt>
+                      <dd>Malbourne street 98</dd>
+                      <dt>Town</dt>
+                      <dd>San Francisco</dd>
+                      <dt>Postcode / Zip</dt>
+                      <dd>90804</dd>
+                      <dt>Phone Number</dt>
+                      <dd>+16509386533</dd>
+                  </dl>
+                  
+              </div>
+  
+  		  </div>
+  		  
+  		  <div class="col-md-12">
+              <div class="billing-address">
+                  <label class="liner">
+                  	Orders
+                  </label>
+                  <div class="table-responsive">
+  			      <table class="table">
+  			        <thead>
+  			          <tr>
+  			            <th>#</th>
+  			            <th>Product Name</th>
+  			            <th>Date</th>
+  			            <th>Price</th>
+  			            <th>Status</th>
+  			          </tr>
+  			        </thead>
+  			        <tbody>
+  			          <tr>
+  			            <td>1</td>
+  			            <td><a href="one-item.html">Apple iphone 6</a></td>
+  			            <td>11/6/2014</td>
+  			            <td>$899.00</td>
+  			            <td><span class="label label-info">Processing</span></td>
+  			          </tr>
+  			          <tr>
+  			            <td>2</td>
+  			            <td><a href="one-item.html">LG G3</a></td>
+  			            <td>10/6/2014</td>
+  			            <td>$621.00</td>
+  			            <td><span class="label label-success">Shipped</span></td>
+  			          </tr>
+  			          <tr>
+  			            <td>3</td>
+  			            <td><a href="one-item.html">Samsung Galaxy S5</a></td>
+  			            <td>11/9/2013</td>
+  			            <td>$640.00</td>
+  			            <td><span class="label label-info">Processing</span></td>
+  			          </tr>
+  			          <tr>
+  			            <td>4</td>
+  			            <td><a href="one-item.html" target="_blank">Rook Landing Page</a></td>
+  			            <td>11/6/2014</td>
+  			            <td>$12.00</td>
+  			            <td><span class="label label-primary">Completed</span></td>
+  			          </tr>
+  			        </tbody>
+  			      </table>
+  			    </div>
+                  
+              </div>
+           </div>
+  		  
+  	   </div>
+      </div>    
+  </section>
+  
+  {{> Footer}}
+</template>

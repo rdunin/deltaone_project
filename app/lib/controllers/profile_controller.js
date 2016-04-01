@@ -1,4 +1,4 @@
-OrderController = RouteController.extend({
+ProfileController = RouteController.extend({
   
   // A place to put your subscriptions
   // this.subscribe('items');
@@ -6,7 +6,6 @@ OrderController = RouteController.extend({
   // this.subscribe('item', this.params._id).wait();
   
   subscriptions: function() {
-    this.subscribe('items');
   },
   
   // Subscriptions or other things we want to "wait" on. This also
@@ -24,11 +23,6 @@ OrderController = RouteController.extend({
   // return Posts.findOne({_id: this.params._id});
   
   data: function () {
-    return {
-        //Get Item ID from URL and Find Item in DataBase
-        item: Items.findOne(this.params._id),
-        itemId: this.params._id
-    };
   },
   
   // You can provide any of the hook options
@@ -52,7 +46,7 @@ OrderController = RouteController.extend({
   //  action: 'myActionFunction'
   
   action: function () {
-    this.render("Create");
+    this.render();
   },
   onAfterAction: function () {
   },
