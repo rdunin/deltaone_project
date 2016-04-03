@@ -20,6 +20,9 @@ Template.Search.events({
             user: Meteor.userId()
         });
         
+        //Last query
+        Session.set('lastquery', sid);
+        
         //Send SMS
         Meteor.call('sendSms');
         

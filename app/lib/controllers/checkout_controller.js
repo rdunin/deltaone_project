@@ -6,6 +6,9 @@ CheckoutController = RouteController.extend({
   // this.subscribe('item', this.params._id).wait();
   
   subscriptions: function() {
+    this.subscribe('search');
+    this.subscribe('items');
+    this.subscribe('orders');
   },
   
   // Subscriptions or other things we want to "wait" on. This also

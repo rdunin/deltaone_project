@@ -6,7 +6,18 @@ OrderController = RouteController.extend({
   // this.subscribe('item', this.params._id).wait();
   
   subscriptions: function() {
+    this.subscribe('search');
     this.subscribe('items');
+    this.subscribe('orders');
+  },
+  
+  create: function(){
+    
+    if(Router.current().params.query.id === undefined){
+      Router.go('home');
+    }
+    
+    this.render("Create");
   },
   
   // Subscriptions or other things we want to "wait" on. This also
@@ -52,7 +63,7 @@ OrderController = RouteController.extend({
   //  action: 'myActionFunction'
   
   action: function () {
-    this.render("Create");
+    this.render();
   },
   onAfterAction: function () {
   },

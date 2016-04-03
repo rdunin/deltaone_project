@@ -20,8 +20,12 @@ Template.Home.events({
             user: Meteor.userId()
         });
         
+        //Last query
+        Session.set('lastquery', sid);
+        
         //Send SMS
         //Meteor.call('sendSms');
+        
         
         //Redirect To Search Page with id param it's Query ID
         Router.go('search', {}, {query: 'id='+sid});

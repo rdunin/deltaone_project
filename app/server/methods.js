@@ -48,5 +48,45 @@ Meteor.methods({
         }
     );
     
+  },
+  'getproduct': function(query){
+    var future = new Future();
+    
+    var api_key = 'SEM34598D0EE85C13ED92AB1380B4C420C1D';
+    var api_secret = 'NzA3ZDM0NmQ4ZjY4ZWY3NThhMTA0ZWI3NWMxYmVmNjI';
+    //var sem3 = require('semantics3-node')(api_key,api_secret);
+    
+    var sem3 = Meteor.npmRequire('semantics3-node')(api_key,api_secret);
+    
+    // Build the request 
+    sem3.products.products_field( "search", query );
+    //console.log(query+" New");
+    
+    var answer;
+    //var api;
+   // Run the request 
+   sem3.products.get_products(
+      function(err, products) {
+          if (err) {
+            console.log("Couldn't execute request: get_products");
+            return;
+          }
+        // View results of the request 
+        //console.log( "Results of request:\n" + JSON.stringify( products ) );
+        //answer = products;
+        //console.log("Work");
+        
+        //var api = JSON.stringify(products);
+        //processFile();
+        
+        future["return"](JSON.parse(products))
+      }
+    );
+    
+    //console.log(answer);
+    //function processFile() { answer = api; }
+    
+    //return answer;
+    return future.wait();
   }
 });

@@ -1,5 +1,85 @@
 <template name="Create">
-  <div class="create">
-    <h1>Find me in app/client/templates/order/create/create</h1>
-  </div>
+  
+  {{> Navbar}}
+  
+  <div class="space"></div>
+
+  <section id="checkout-page">
+      <div class="container">
+          <div class="col-xs-12 no-margin">
+            <form methods="post">
+              <div class="billing-address">
+                  <h2 class="border h1">Shipping address</h2>
+                
+                    <div class="row field-row">
+                        <div class="col-xs-12 col-sm-6">
+                            <label>First name*</label>
+                            <input class="le-input" name="first_name" value="{{currentUser.profile.first_name}}" placeholder="John" required>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label>last name*</label>
+                            <input class="le-input" name="last_name" value="{{currentUser.profile.last_name}}" placeholder="Smith" required>
+                        </div>
+                    </div>
+  
+                    <div class="row field-row">
+                        <div class="col-xs-12 col-sm-6">
+                            <label>address*</label>
+                            <input class="le-input placeholder" name="address" value="{{currentUser.profile.address}}" placeholder="Street address" required>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label>town*</label>
+                            <input class="le-input placeholder" name="town" value="{{currentUser.profile.town}}" placeholder="Town" required>
+                        </div>
+                    </div>
+  
+                    <div class="row field-row">
+                        <div class="col-xs-12 col-sm-4">
+                            <label>postcode / Zip*</label>
+                            <input class="le-input" name="zip" value="{{currentUser.profile.zip}}" placeholder="Zip" required>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <label>email address*</label>
+                            <input class="le-input" name="email" value="{{currentUser.emails.[0].address}}" placeholder="example@example.com" required>
+                        </div>
+  
+                        <div class="col-xs-12 col-sm-4">
+                            <label>phone number*</label>
+                            <input class="le-input" name="phone" value="{{currentUser.profile.phone}}" placeholder="+100990099" required>
+                        </div>
+                    </div>
+  
+              </div>
+  
+        			<section id="your-order">
+                  <h2 class="border h1">Items</h2>
+                  <div class="row no-margin order-item">
+                      <div class="col-xs-12 col-sm-3 pull-center">
+                          <img src="{{item.images.[0].url}}" alt="...">
+                      </div>
+      		            <div class="col-xs-12 col-sm-7 ">
+                          <div class="title"><a target="_blank" href="/item/{{item._id}}">{{item.title}}</a></div>
+                          <div class="brand">{{item.model}}</div>
+                      </div>
+                      <div class="col-xs-12 col-sm-2">
+                          <div class="price">${{item.price}}</div>
+                      </div>
+                  </div>
+              </section>
+            
+              <div class="col-md-12" style="margin: 30px 20px;"> 
+    						<div class="row">
+    							<div class="col-xs-12">
+    								<button class="btn btn-lg btn-fill btn-danger btn-block" type="submit">Create Order</button>
+    							</div>
+    						</div>
+    					</div>
+            
+            </form>
+        </div>
+    </div>
+</section>
+  
+  {{> Footer}}
+  
 </template>

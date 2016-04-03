@@ -12,7 +12,7 @@
       		<div class="billing-address">
                   <label class="liner">
                   	Personal info
-                  	<span><a href="#" onclick="$('#personaledit').toggle(); $('#personal').toggle(); return false;" >Edit</a></span>
+                  	<span></span>
                   </label>
                   	
                   	<div id="personaledit" class="form-horizontal hide-row">
@@ -28,14 +28,11 @@
   	                            <input type="password" name="password" class="form-control" value="" placeholder="Password">
   	                        </div>
   	                    </div>
-  	                    <div class="form-group">
-                      		<a href="#" class="btn btn-sm btn-fill btn-danger pull-right">Save</a>	
-                      	</div>
   	                </div>
                   
   	                <dl id="personal" class="dl-horizontal">
   	                    <dt>Email</dt>
-  	                    <dd>deltaone@delta.com</dd>
+  	                    <dd>{{userEmail}}</dd>
   	                    <dt>Password</dt>
   	                    <dd>**********</dd>
   	                </dl>
@@ -49,7 +46,7 @@
               <div class="billing-address">
                   <label class="liner">
                   	Shipping address
-                  	<span><a href="#" onclick="$('#shippingedit').toggle(); $('#shipping').toggle(); console.log($(this).text()); return false;" >Edit</a></span>
+                  	<span><a href="#" class="editdata" >Edit</a></span>
                   </label>
                   
                   <div id="shippingedit" class="form-horizontal hide-row">
@@ -58,10 +55,10 @@
                           <div class="col-sm-9">
                               <div class="row">
                                   <div class="col-sm-6">
-                                      <input type="text" name="first_name" class="form-control" value="John" placeholder="First Name">
+                                      <input type="text" name="first_name" class="form-control" value="{{currentUser.profile.first_name}}" placeholder="John">
                                   </div>
                                   <div class="col-sm-6">
-                                      <input type="text" name="last_name" class="form-control" value="Connor" placeholder="Last Name">
+                                      <input type="text" name="last_name" class="form-control" value="{{currentUser.profile.last_name}}" placeholder="Connor">
                                   </div>
                               </div>
                           </div>
@@ -71,10 +68,10 @@
                           <div class="col-sm-9">
                               <div class="row">
                                   <div class="col-sm-6">
-                                      <input type="text" name="first_name" class="form-control" value="Malbourne street 98" placeholder="Address">
+                                      <input type="text" name="address" class="form-control" value="{{currentUser.profile.address}}" placeholder="Malbourne street 98">
                                   </div>
                                   <div class="col-sm-6">
-                                      <input type="text" name="last_name" class="form-control" value="San Francisco" placeholder="Town">
+                                      <input type="text" name="town" class="form-control" value="{{currentUser.profile.town}}" placeholder="San Francisco">
                                   </div>
                               </div>
                           </div>
@@ -84,7 +81,7 @@
                           <div class="col-sm-9">
                               <div class="row">
                                   <div class="col-sm-12">
-                                      <input type="text" name="first_name" class="form-control" value="90804" placeholder="Address">
+                                      <input type="text" name="zip" class="form-control" value="{{currentUser.profile.zip}}" placeholder="90804">
                                   </div>
                               </div>
                           </div>
@@ -92,27 +89,25 @@
                       <div class="form-group">
                           <label class="col-sm-3 control-label">Phone Number</label>
                           <div class="col-sm-9">
-                              <input type="text" name="phone" value="" class="form-control" placeholder="Phone Number">
+                              <input type="text" name="phone" value="{{currentUser.profile.phone}}" class="form-control" placeholder="Phone Number">
                           </div>
                       </div>
-                      <div class="form-group">
-                      	<a href="#" class="btn btn-sm btn-fill btn-danger pull-right">Save</a>	
-                      </div>
+                      
                   </div>
                   
                   <dl id="shipping" class="dl-horizontal">
                       <dt>First Name</dt>
-                      <dd>John</dd>
+                      <dd>{{currentUser.profile.first_name}}</dd>
                       <dt>Last Name</dt>
-                      <dd>Connor</dd>
+                      <dd>{{currentUser.profile.last_name}}</dd>
                       <dt>Address</dt>
-                      <dd>Malbourne street 98</dd>
+                      <dd>{{currentUser.profile.address}}</dd>
                       <dt>Town</dt>
-                      <dd>San Francisco</dd>
+                      <dd>{{currentUser.profile.town}}</dd>
                       <dt>Postcode / Zip</dt>
-                      <dd>90804</dd>
+                      <dd>{{currentUser.profile.zip}}</dd>
                       <dt>Phone Number</dt>
-                      <dd>+16509386533</dd>
+                      <dd>{{currentUser.profile.phone}}</dd>
                   </dl>
                   
               </div>

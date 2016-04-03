@@ -151,6 +151,48 @@ Template.Work.events({
     'change .searchquery': function (e) {
       var itemsearch = $(e.currentTarget).val();
       Session.set('searchquery', itemsearch);
+    },
+    'click #semantic button': function(){
+        $('#sem3-accordion').show();
+        var query = $('#semantic input').val();
+        //console.log(query)
+        //var ans = Meteor.call('getproduct', query);
+        
+        //console.log(ans);
+        
+        Meteor.call("getproduct", query, function(error, result){
+          if(error){
+            console.log(error.reason);
+            return;
+          }else{
+            console.log(result);
+            $('#sem3-name-1').text(result.results[0].name);
+            $('#sem3-name-2').text(result.results[1].name);
+            $('#sem3-name-3').text(result.results[2].name);
+            $('#sem3-result-1 dd:eq(0)').text(result.results[0].category);
+            $('#sem3-result-1 dd:eq(1)').text(result.results[0].brand);
+            $('#sem3-result-1 dd:eq(2)').text(result.results[0].color);
+            $('#sem3-result-3 dd:eq(0)').text(result.results[2].category);
+            $('#sem3-result-3 dd:eq(1)').text(result.results[2].brand);
+            $('#sem3-result-3 dd:eq(2)').text(result.results[2].color);
+            
+            var stores = result.results[0].sitedetails;
+            var numStores = stores.length;
+            var priceList = "";
+            for (var i = 0; i < numStores; i++) {
+               var store = stores[i].name;
+               var numStorePrices = stores[i].latestoffers.length;
+               priceList.concat(store + ": ");
+               for (var j = 0; j < numStorePrices; j++) {
+                  priceList.concat(stores[i].latestoffers[j].price+" ");
+               }
+               priceList.concat("<br>");
+            }
+            $('#sem3-prices-1').text(priceList);
+            //console.log(result.results[0]);
+          }
+        });
+        
     }
 });
 

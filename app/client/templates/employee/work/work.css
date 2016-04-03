@@ -3,3 +3,36 @@
 /*****************************************************************************/
 .work {
 }
+
+.h4-sem3 {
+ -moz-osx-font-smoothing: grayscale;
+ -webkit-font-smoothing: antialiased;
+ font-size: 16px;  
+}
+.sem3-panel {
+    border: 0;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    margin: 15 15px 10px;
+    border-bottom: 1px solid #CCCCCC;
+    box-shadow: none;
+}
+.sem3-panel-default > .sem3-panel-heading {
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+    /*box-shadow: 0 1px 7px rgba(0, 0, 0, 0.14); */
+}
+.sem3-panel-group .sem3-panel{
+    border-radius: 0;
+}
+.sem3-panel-title {
+}
+.sem3-panel-title a:hover, .sem3-panel-title a:focus{
+    text-decoration: none;
+}
+.sem3-panel-body{
+   /* overflow:auto; */
+   /* border:1px solid #D3D3D3; */
+   padding-left:15px;
+   border-top-width:0px;
+}

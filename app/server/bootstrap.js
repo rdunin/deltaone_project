@@ -1,4 +1,8 @@
 Meteor.startup(function () {
+   
+   //Node Package
+   Future = Npm.require('fibers/future');
+   
    //Add Guest Account
    AccountsGuest.anonymous = true;
    

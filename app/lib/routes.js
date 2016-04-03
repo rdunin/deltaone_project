@@ -45,9 +45,10 @@ Router.route('/employee/items', {
 });
 
 //Router Orders Page
-Router.route('/orders', {
-  name: 'Orders',
+Router.route('/order/create', {
+  name: 'OrdersCreate',
   controller: 'OrderController',
+  action: 'create',
   where: 'client'
 });
 

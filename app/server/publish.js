@@ -31,3 +31,8 @@ Meteor.publish('items', function () {
     sort: {'answers': -1}
   });
 });
+
+// Puplish Orders Result only for this user
+Meteor.publish('orders', function () {
+  return Orders.find({ user: this.userId });
+});

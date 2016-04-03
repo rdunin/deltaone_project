@@ -36,6 +36,89 @@
           	<b>Querys:</b> {{SearchCount}}
           </div>
           
+          <div id="semantic" class="col-md-12 borderbar">
+            <!--
+            <input placeholder="Semantic search..." class="col-md-9 form-control" type="text" name="testbar" >
+            <button class="btn btn-md btn-fill btn-danger col-md-3">Find</button>
+            --> 
+            <div class="input-group">
+             <input placeholder="Product lookup" type="text" class="form-control" name="testbar">
+             <span class="input-group-btn">
+                  <button class="btn btn-fill btn-danger btn-default" type="button">Go!</button>
+             </span>
+            </div>
+            
+            <div class="sem3-panel-group" id="sem3-accordion"> <!-- style="display:none"> -->
+              <div class="sem3-panel sem3-panel-default">
+                <div class="sem3-panel-heading">
+                  <div class="h4-sem3 sem3-panel-title">
+                    <a id="sem3-name-1" data-toggle="collapse" data-parent="#sem3-accordion" href="#collapse1">Collapsible Group 1</a>
+                  </div>
+                </div>
+                <div id="collapse1" class="sem3-panel-collapse collapse">
+                  <div id="sem3-results-1" class="col-md-12 sem3-panel-body">
+            	      <dl class="dl-horizontal col-md-4 col-lg-4"> 
+                      <dt>cat:</dt>
+                      <dd id="sem3-category-1">-</dd>
+                    </dl>
+            	      <dl class="dl-horizontal col-md-4 col-lg-4"> 
+                      <dt>brand:</dt>
+                      <dd id="sem3-brand-1">-</dd>
+                    </dl>
+            	      <dl class="dl-horizontal col-md-4 col-lg-4"> 
+                      <dt>color:</dt>
+                      <dd id="sem3-color-1">-</dd>
+                    </dl>
+                    <div id="sem3-prices-1"> </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sem3-panel sem3-panel-default">
+                <div class="sem3-panel-heading">
+                  <div class="h4-sem3 sem3-panel-title">
+                    <a id="sem3-name-2" data-toggle="collapse" data-parent="#sem3-accordion" href="#collapse2">Collapsible Group 2</a>
+                  </div>
+                </div>
+                <div id="collapse2" class="sem3-panel-collapse collapse">
+                  <div id="sem3-results-2" class="col-md-12 sem3-panel-body">
+            	      <dl class="dl-horizontal col-md-4"> 
+                      <dt >cat:</dt> <dd id="sem3-category-2">-</dd>
+                    </dl>
+            	      <dl class="dl-horizontal col-md-4"> 
+                      <dt>brand:</dt> <dd id="sem3-brand-2">-</dd>
+                    </dl>
+            	      <dl class="dl-horizontal col-md-4"> 
+                      <dt>color:</dt> <dd id="sem3-color-2">-</dd>
+                    </dl>
+                    <div id="sem3-prices-2"> </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sem3-panel sem3-panel-default">
+                <div class="sem3-panel-heading">
+                  <div class="sem3-panel-title">
+                    <a id="sem3-name-3" data-toggle="collapse" data-parent="#sem3-accordion" href="#collapse3">Collapsible Group 3</a>
+                  </div>
+                </div>
+                <div id="collapse3" class="sem3-panel-collapse collapse">
+                  <div id="sem3-results-3" class="col-md-12 sem3-panel-body">
+            	      <dl class="dl-horizontal col-md-4"> 
+                      <dt >cat:</dt> <dd id="sem3-category-3">none</dd>
+                    </dl>
+            	      <dl class="dl-horizontal col-md-4"> 
+                      <dt>brand:</dt> <dd id="sem3-brand-3">none</dd>
+                    </dl>
+            	      <dl class="dl-horizontal col-md-4"> 
+                      <dt>color:</dt> <dd id="sem3-color-3">none</dd>
+                    </dl>
+                    <div id="sem3-prices-3"></div>
+                  </div>
+                </div>
+              </div>
+            </div> 
+        
+          </div>
+          
           <div id="querywork" class="col-md-12 borderbar" style="display:none;">
           	
           	<div class="row">

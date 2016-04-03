@@ -1,0 +1,45 @@
+{
+  "dependencies": {
+    "fibers": {
+      "version": "1.0.10"
+    },
+    "normalize-url": {
+      "version": "1.4.1",
+      "dependencies": {
+        "object-assign": {
+          "version": "4.0.1"
+        },
+        "prepend-http": {
+          "version": "1.0.3"
+        },
+        "query-string": {
+          "version": "3.0.3",
+          "dependencies": {
+            "strict-uri-encode": {
+              "version": "1.1.0"
+            }
+          }
+        },
+        "sort-keys": {
+          "version": "1.1.1",
+          "dependencies": {
+            "is-plain-obj": {
+              "version": "1.1.0"
+            }
+          }
+        }
+      }
+    },
+    "oauth": {
+      "version": "0.9.14"
+    },
+    "semantics3-node": {
+      "version": "0.0.3",
+      "dependencies": {
+        "oauth": {
+          "version": "0.9.8"
+        }
+      }
+    }
+  }
+}

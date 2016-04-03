@@ -12,39 +12,39 @@
                   <form>
                       <div class="row field-row">
                           <div class="col-xs-12 col-sm-6">
-                              <label>full name*</label>
-                              <input class="le-input">
+                              <label>First name*</label>
+                              <input class="le-input" name="firstname" placeholder="John" required>
                           </div>
                           <div class="col-xs-12 col-sm-6">
                               <label>last name*</label>
-                              <input class="le-input">
+                              <input class="le-input" name="lastname" placeholder="Smith" required>
                           </div>
                       </div>
   
                       <div class="row field-row">
                           <div class="col-xs-12 col-sm-6">
                               <label>address*</label>
-                              <input class="le-input placeholder" placeholder="street address">
+                              <input class="le-input placeholder" placeholder="Street address" required>
                           </div>
                           <div class="col-xs-12 col-sm-6">
                               <label>&nbsp;</label>
-                              <input class="le-input placeholder" placeholder="town">
+                              <input class="le-input placeholder" name="town" placeholder="Town" required>
                           </div>
                       </div>
   
                       <div class="row field-row">
                           <div class="col-xs-12 col-sm-4">
                               <label>postcode / Zip*</label>
-                              <input class="le-input">
+                              <input class="le-input" name="zip" placeholder="Zip" required>
                           </div>
                           <div class="col-xs-12 col-sm-4">
                               <label>email address*</label>
-                              <input class="le-input">
+                              <input class="le-input" name="email" placeholder="example@example.com" required>
                           </div>
   
                           <div class="col-xs-12 col-sm-4">
                               <label>phone number*</label>
-                              <input class="le-input">
+                              <input class="le-input" name="phone" placeholder="+100990099" required>
                           </div>
                       </div>
   
@@ -56,7 +56,7 @@
                   <form>
                       <div class="row no-margin order-item">
                           
-  						<div class="col-xs-12 col-sm-3 pull-center">
+  						            <div class="col-xs-12 col-sm-3 pull-center">
                               <img src="img/prod2.jpg" alt="...">
                           </div>
   						
@@ -71,7 +71,7 @@
                       </div>
   
                   </form>
-              </section>
+        </section>
   
         <div id="total-area" class="row no-margin">
   				<form role="form" id="payment-form">
@@ -184,23 +184,22 @@
   
                       </div><!-- /#subtotal-holder -->
   					
-  					<div class="col-md-12" style="margin: 30px 20px;"> 
-  						<div class="row">
-  							<div class="col-xs-12">
-  								<button class="btn btn-lg btn-fill btn-danger btn-block" type="submit">Pay Now</button>
-  							</div>
-  						</div>
-  						<div class="row" style="display:none;">
-  							<div class="col-xs-12">
-  								<p class="payment-errors"></p>
-  							</div>
-  						</div>
-  					</div>
+            					<div class="col-md-12" style="margin: 30px 20px;"> 
+            						<div class="row">
+            							<div class="col-xs-12">
+            								<button class="btn btn-lg btn-fill btn-danger btn-block" type="submit">Pay Now</button>
+            							</div>
+            						</div>
+            						<div class="row" style="display:none;">
+            							<div class="col-xs-12">
+            								<p class="payment-errors"></p>
+            							</div>
+            						</div>
+            					</div>
   					
                   </div>
-  				</form>
+  				      </form>
               </div>
-  
           </div>
       </div>
   </section>
