@@ -47,5 +47,6 @@ momentjs:moment
 
 easy:search
 http
+mrgalaxy:stripe
 #underscore
 #dispatch:twilio

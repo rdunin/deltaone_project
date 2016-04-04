@@ -169,12 +169,12 @@ Template.Work.events({
             $('#sem3-name-1').text(result.results[0].name);
             $('#sem3-name-2').text(result.results[1].name);
             $('#sem3-name-3').text(result.results[2].name);
-            $('#sem3-result-1 dd:eq(0)').text(result.results[0].category);
-            $('#sem3-result-1 dd:eq(1)').text(result.results[0].brand);
-            $('#sem3-result-1 dd:eq(2)').text(result.results[0].color);
-            $('#sem3-result-3 dd:eq(0)').text(result.results[2].category);
-            $('#sem3-result-3 dd:eq(1)').text(result.results[2].brand);
-            $('#sem3-result-3 dd:eq(2)').text(result.results[2].color);
+            $('#sem3-category-1').text(result.results[0].category);
+            $('#sem3-brand-1').text(result.results[0].brand);
+            $('#sem3-color-1').text(result.results[0].color);
+            $('#sem3-category-3').text(result.results[2].category);
+            $('#sem3-brand-3').text(result.results[2].brand);
+            $('#sem3-color-3').text(result.results[2].color);
             
             var stores = result.results[0].sitedetails;
             var numStores = stores.length;
@@ -183,7 +183,8 @@ Template.Work.events({
                var store = stores[i].name;
                var numStorePrices = stores[i].latestoffers.length;
                priceList.concat(store + ": ");
-               for (var j = 0; j < numStorePrices; j++) {
+               priceList.concat("<strong>" + stores[i].latestoffers[0].price+"</strong> ");
+               for (var j = 1; j < numStorePrices; j++) {
                   priceList.concat(stores[i].latestoffers[j].price+" ");
                }
                priceList.concat("<br>");

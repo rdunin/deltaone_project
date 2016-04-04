@@ -7,169 +7,170 @@
       <div class="container">
           <div class="col-xs-12 no-margin">
               
-              <div class="billing-address">
-                  <h2 class="border h1">Shipping address</h2>
-                  <form>
-                      <div class="row field-row">
-                          <div class="col-xs-12 col-sm-6">
-                              <label>First name*</label>
-                              <input class="le-input" name="firstname" placeholder="John" required>
-                          </div>
-                          <div class="col-xs-12 col-sm-6">
-                              <label>last name*</label>
-                              <input class="le-input" name="lastname" placeholder="Smith" required>
-                          </div>
-                      </div>
+            <div class="billing-address">
+                <h2 class="border h1">Shipping address</h2>
+                <form>
+                    <div class="row field-row">
+                        <div class="col-xs-12 col-sm-6">
+                            <label>full name</label>
+                            <p>{{order.first_name}}</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label>last name</label>
+                            <p>{{order.last_name}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row field-row">
+                        <div class="col-xs-12 col-sm-6">
+                            <label>address</label>
+                            <p>{{order.address}}</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <label>town</label>
+                            <p>{{order.town}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row field-row">
+                        <div class="col-xs-12 col-sm-4">
+                            <label>postcode / Zip</label>
+                            <p>{{order.zip}}</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <label>email address</label>
+                            <p>{{order.email}}</p>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4">
+                            <label>phone number</label>
+                            <p>{{order.phone}}</p>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
   
-                      <div class="row field-row">
-                          <div class="col-xs-12 col-sm-6">
-                              <label>address*</label>
-                              <input class="le-input placeholder" placeholder="Street address" required>
-                          </div>
-                          <div class="col-xs-12 col-sm-6">
-                              <label>&nbsp;</label>
-                              <input class="le-input placeholder" name="town" placeholder="Town" required>
-                          </div>
-                      </div>
-  
-                      <div class="row field-row">
-                          <div class="col-xs-12 col-sm-4">
-                              <label>postcode / Zip*</label>
-                              <input class="le-input" name="zip" placeholder="Zip" required>
-                          </div>
-                          <div class="col-xs-12 col-sm-4">
-                              <label>email address*</label>
-                              <input class="le-input" name="email" placeholder="example@example.com" required>
-                          </div>
-  
-                          <div class="col-xs-12 col-sm-4">
-                              <label>phone number*</label>
-                              <input class="le-input" name="phone" placeholder="+100990099" required>
-                          </div>
-                      </div>
-  
-                  </form>
-              </div>
-  
-  			<section id="your-order">
-                  <h2 class="border h1">Items</h2>
-                  <form>
-                      <div class="row no-margin order-item">
-                          
-  						            <div class="col-xs-12 col-sm-3 pull-center">
-                              <img src="img/prod2.jpg" alt="...">
-                          </div>
-  						
-                          <div class="col-xs-12 col-sm-7 ">
-                              <div class="title"><a href="#">Samsung - 55" - LED - 4K Ultra HD TV</a></div>
-                              <div class="brand">Samsung</div>
-                          </div>
-  
-                          <div class="col-xs-12 col-sm-2">
-                              <div class="price">$699.00</div>
-                          </div>
-                      </div>
-  
-                  </form>
-        </section>
+      			<section id="your-order">
+                <h2 class="border h1">Items</h2>
+                <form>
+                    <div class="row no-margin order-item">
+                        
+    				    <div class="col-xs-12 col-sm-3 pull-center">
+                            <img src="{{item.images.[0].url}}" alt="...">
+                        </div>
+    				
+                        <div class="col-xs-12 col-sm-7 ">
+                            <div class="title"><a target="_blank" href="/item/{{item._id}}">{{item.title}}</a></div>
+                            <div class="brand">{{item.model}}</div>
+                        </div>
+    
+                        <div class="col-xs-12 col-sm-2">
+                            <div class="price">${{item.price}}</div>
+                        </div>
+                    </div>
+    
+                </form>
+            </section>
   
         <div id="total-area" class="row no-margin">
   				<form role="form" id="payment-form">
-  				<div class="col-lg-8">
-  					<div class="col-md-12 col-sm-12 col-xs-12">
-  						<div class="" role="tabpanel" data-example-id="togglable-tabs" style="margin-top: 31px;" >
-  							<ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-  								<li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><i class="fa fa-credit-card"></i></a>
-  								</li>
-  								<li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Other Method</a>
-  								</li>
-  							</ul>
-  							<div id="myTabContent" class="tab-content">
-  								<div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-  									
-  									<div class="panel panel-default credit-card-box">
-  										<div class="panel-heading display-table" >
-  											<div class="row display-tr" >
-  												<h3 class="panel-title display-td" >Payment Details</h3>
-  												<div class="display-td" >                            
-  													<img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
-  												</div>
-  											</div>                    
-  										</div>
-  										<div class="panel-body col-sm-12">
-  											<div class="row">
-  													<div class="col-xs-6">
-  														<div class="form-group">
-  															<label for="cardNumber">CARD NUMBER</label>
-  															<div class="input-group">
-  																<input 
-  																	type="tel"
-  																	class="form-control"
-  																	name="cardNumber"
-  																	placeholder="Valid Card Number"
-  																	autocomplete="cc-number"
-  																	required 
-  																/>
-  																<span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-  															</div>
-  														</div>                            
-  													</div>
-  												</div>
-  												<div class="row">
-  													<div class="col-xs-7 col-md-7">
-  														<div class="form-group">
-  															<label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
-  															<input 
-  																type="tel" 
-  																class="form-control" 
-  																name="cardExpiry"
-  																placeholder="MM / YY"
-  																autocomplete="cc-exp"
-  																required 
-  															/>
-  														</div>
-  													</div>
-  													<div class="col-xs-5 col-md-5 pull-right">
-  														<div class="form-group">
-  															<label for="cardCVC">CV CODE</label>
-  															<input 
-  																type="tel" 
-  																class="form-control"
-  																name="cardCVC"
-  																placeholder="CVC"
-  																autocomplete="cc-csc"
-  																required
-  															/>
-  														</div>
-  													</div>
-  												</div>
-  										</div>
-  									</div>            
-  									<!-- CREDIT CARD FORM ENDS HERE -->
-  									
-  								</div>
-  								<div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-  									<p>Payment Form</p>
-  								</div>
-  							</div>
-  						</div>
-  
-  					</div>
-  					
-  				</div>
+          				
+          				<div class="col-lg-8">
+          					<div class="col-md-12 col-sm-12 col-xs-12">
+          						<div class="" role="tabpanel" data-example-id="togglable-tabs" style="margin-top: 31px;" >
+          							<ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+          								<li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><i class="fa fa-credit-card"></i></a>
+          								</li>
+          								<!--<li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Other Method</a>-->
+          								<!--</li>-->
+          							</ul>
+          							<div id="myTabContent" class="tab-content">
+          								<div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+          									
+          									<div class="panel panel-default credit-card-box">
+          										<div class="panel-heading display-table" >
+          											<div class="row display-tr" >
+          												<h3 class="panel-title display-td" >Payment Details</h3>
+          												<div class="display-td" >                            
+          													<img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+          												</div>
+          											</div>                    
+          										</div>
+          										<div class="panel-body col-sm-12">
+          											<div class="row">
+          													<div class="col-xs-6">
+          														<div class="form-group">
+          															<label for="cardNumber">CARD NUMBER</label>
+          															<div class="input-group">
+          																<input 
+          																	type="tel"
+          																	class="form-control"
+          																	name="cardNumber"
+          																	placeholder="Valid Card Number"
+          																	autocomplete="cc-number"
+          																	required 
+          																/>
+          																<span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+          															</div>
+          														</div>                            
+          													</div>
+          												</div>
+          												<div class="row">
+          													<div class="col-xs-7 col-md-7">
+          														<div class="form-group">
+          															<label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+          															<input 
+          																type="tel" 
+          																class="form-control" 
+          																name="cardExpiry"
+          																placeholder="MM / YY"
+          																autocomplete="cc-exp"
+          																required 
+          															/>
+          														</div>
+          													</div>
+          													<div class="col-xs-5 col-md-5 pull-right">
+          														<div class="form-group">
+          															<label for="cardCVC">CV CODE</label>
+          															<input 
+          																type="tel" 
+          																class="form-control"
+          																name="cardCVC"
+          																placeholder="CVC"
+          																autocomplete="cc-csc"
+          																required
+          															/>
+          														</div>
+          													</div>
+          												</div>
+          										</div>
+          									</div>            
+          									<!-- CREDIT CARD FORM ENDS HERE -->
+          									
+          								</div>
+          								<!--<div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">-->
+          									
+          								<!--</div>-->
+          							</div>
+          						</div>
+          
+          					</div>
+          					
+          				</div>
+          				
                   <div class="col-xs-12 col-lg-4 no-margin-right">
                       <div id="subtotal-holder">
                           <ul class="tabled-data inverse-bold no-border">
                               <li>
                                   <label>cart subtotal</label>
-                                  <div class="value ">$699.00</div>
+                                  <div class="value ">${{item.price}}</div>
                               </li>
                               <li>
                                   <label>shipping</label>
                                   <div class="value">
                                       <div class="radio-group">
-                                          <div class="radio-label bold"><input class="le-radio" type="radio" name="group1" value="free">  Free shipping</div><br>
-                                          <div class="radio-label"><input class="le-radio" type="radio" name="group1" value="local" checked=""> Local delivery <span class="bold">$15</span></div>
+                                          <div class="radio-label bold"><input class="le-radio" type="radio" name="group1" value="free" checked >  Free shipping</div><br>
                                       </div>
                                   </div>
                               </li>
@@ -178,7 +179,7 @@
                           <ul id="total-field" class="tabled-data inverse-bold ">
                               <li>
                                   <label>order total</label>
-                                  <div class="value">$714.00</div>
+                                  <div class="value">${{item.price}}</div>
                               </li>
                           </ul><!-- /.tabled-data -->
   
@@ -197,8 +198,9 @@
             						</div>
             					</div>
   					
-                  </div>
-  				      </form>
+                          </div>
+                      <input type="hidden" name="order_price" value="{{item.price}}" />
+  				  </form>
               </div>
           </div>
       </div>

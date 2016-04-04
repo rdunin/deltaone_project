@@ -18,6 +18,8 @@ Template.Create.events({
         var email = event.target.email.value;
         var phone = event.target.phone.value;
         
+        var lastquery = Session.get('lastquery');
+        
         //Create Order Query
         var sid = Orders.insert({
             first_name: first_name,
@@ -29,7 +31,9 @@ Template.Create.events({
             zip: zip,
             email: email,
             phone: phone,
-            items: itemId
+            items: itemId,
+            lastquery: lastquery,
+            status: "Created"
         });
         
         Router.go('Checkout', {}, {query: 'id='+sid});
