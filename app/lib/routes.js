@@ -59,6 +59,14 @@ Router.route('/checkout', {
   where: 'client'
 });
 
+//Router Checkout Success Page
+Router.route('/checkout/success', {
+  name: 'Success',
+  controller: 'CheckoutController',
+  action: 'success',
+  where: 'client'
+});
+
 //Router Profile Page
 Router.route('/profile', {
   name: 'Profile',

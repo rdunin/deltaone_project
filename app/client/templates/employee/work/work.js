@@ -166,36 +166,70 @@ Template.Work.events({
             return;
           }else{
             console.log(result);
-            $('#sem3-name-1').text(result.results[0].name);
-            $('#sem3-name-2').text(result.results[1].name);
-            $('#sem3-name-3').text(result.results[2].name);
-            $('#sem3-category-1').text(result.results[0].category);
-            $('#sem3-brand-1').text(result.results[0].brand);
-            $('#sem3-color-1').text(result.results[0].color);
-            $('#sem3-category-3').text(result.results[2].category);
-            $('#sem3-brand-3').text(result.results[2].brand);
-            $('#sem3-color-3').text(result.results[2].color);
             
-            var stores = result.results[0].sitedetails;
-            var numStores = stores.length;
-            var priceList = "";
-            for (var i = 0; i < numStores; i++) {
-               var store = stores[i].name;
-               var numStorePrices = stores[i].latestoffers.length;
-               priceList.concat(store + ": ");
-               priceList.concat("<strong>" + stores[i].latestoffers[0].price+"</strong> ");
-               for (var j = 1; j < numStorePrices; j++) {
-                  priceList.concat(stores[i].latestoffers[j].price+" ");
+            // <TBS>: Load product data from semantic 3
+            //  Currently loads first 3 products
+            // loop over each sem3 product
+            // todo: show model number
+            for (var productInd = 0; productInd < 3; productInd++) {
+               var productNum = productInd + 1;
+               
+               // get css ids for displaying semantic product data
+               var productNameID = '#sem3-name-'+productNum;
+               var productCatID = '#sem3-category-'+productNum;
+               var productBrandID = '#sem3-brand-'+productNum;
+               var productColorID = '#sem3-color-'+productNum;
+               var featuresID = '#featureList-'+productNum;
+               // display basic data
+               $(productNameID).text(result.results[productInd].name);
+               $(productCatID).text(result.results[productInd].category);
+               $(productBrandID).text(result.results[productInd].brand);
+               $(productColorID).text(result.results[productInd].color);
+               
+               // display the product features object of key:value pairs
+               var featuresObj = result.results[productInd].features;
+               var featuresStr = "";
+               for (var key in featuresObj) {
+                   // skip loop if the property is from prototype
+                   if (!featuresObj.hasOwnProperty(key)) continue;
+                   var val = featuresObj[key];
+                   var prettyPrint = "<strong>" + key + "</strong>"
+                                       + " "  + val + " ";
+                   featuresStr = featuresStr.concat(prettyPrint)                    
                }
-               priceList.concat("<br>");
+               //var featuresStr = JSON.stringify(featuresObj);
+               $(featuresID).html(featuresStr);
+               
+               // link to online product page for each store, 
+               // and output price list of recent prices for each store
+               // and show if product price is currently active
+               var stores = result.results[productInd].sitedetails;
+               var numStores = stores.length;
+               var priceList = "";
+               for (var i = 0; i < numStores; i++) {
+                  var store = stores[i].name;
+                  var recentOffers = stores[i].recentoffers_count;
+                  console.log(store)
+                  var numStorePrices = stores[i].latestoffers.length;
+                  var storeLink = "<a target='_blank' href='" + stores[i].url + "'>" + store + "</a>";
+                  priceList = priceList.concat(storeLink + " (" + recentOffers + "): ");
+                  priceList = priceList.concat("<strong>" + stores[i].latestoffers[0].price+"</strong> ");
+                  for (var j = 1; j < numStorePrices; j++) {
+                     priceList = priceList.concat(stores[i].latestoffers[j].price+" ");
+                  }
+                  priceList = priceList.concat("<br>");
+               }
+               var sem3ID = '#sem3-prices-'+productNum;
+               $(sem3ID).html(priceList);
+               //console.log(result.results[0]);
             }
-            $('#sem3-prices-1').text(priceList);
-            //console.log(result.results[0]);
+            // </TBS>
           }
         });
         
     }
 });
+
 
 //Equals Function
 Template.registerHelper('equals', function (a, b) {

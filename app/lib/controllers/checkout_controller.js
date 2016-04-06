@@ -11,6 +11,9 @@ CheckoutController = RouteController.extend({
     this.subscribe('orders');
   },
   
+  success: function(){
+    this.render("Success");
+  },
   // Subscriptions or other things we want to "wait" on. This also
   // automatically uses the loading hook. That's the only difference between
   // this option and the subscriptions option above.

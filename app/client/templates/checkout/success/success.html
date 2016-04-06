@@ -1,5 +1,23 @@
 <template name="Success">
-  <div class="success">
-    <h1>Find me in app/client/templates/checkout/success/success</h1>
+  {{> Navbar}}
+   
+  <div class="space"></div>
+
+  <div class="container">
+  	<div class="row">
+  		<div id="success" class="col-md-12 text-center">
+  			<h3>
+  				<i style="font-size: 90px;color: #50A310;" class="fa fa-check-circle-o"></i>
+  				<br>
+  				<b>Payment Success</b>
+  				<br>
+  				Thanks for Order!
+  			</h3>
+  			<hr>
+  			<p>You can see your order in <a href="/profile">profile page</a></p>
+  		</div>
+  	</div>	
   </div>
+  
+  {{> Footer}}
 </template>

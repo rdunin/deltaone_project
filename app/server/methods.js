@@ -52,8 +52,8 @@ Meteor.methods({
   'getproduct': function(query){
     var future = new Future();
     
-    var api_key = 'SEM34598D0EE85C13ED92AB1380B4C420C1D';
-    var api_secret = 'NzA3ZDM0NmQ4ZjY4ZWY3NThhMTA0ZWI3NWMxYmVmNjI';
+    var api_key = process.env.SEC3_API_KEY;
+    var api_secret = process.env.SEC3_SECRET_KEY;
     //var sem3 = require('semantics3-node')(api_key,api_secret);
     
     var sem3 = Meteor.npmRequire('semantics3-node')(api_key,api_secret);
@@ -87,6 +87,26 @@ Meteor.methods({
     //function processFile() { answer = api; }
     
     //return answer;
+    return future.wait();
+  },
+  'chargeCard': function(stripeToken, amount) {
+    var future = new Future();
+    var Stripe = StripeAPI(process.env.STRIPE_SECRET_KEY);
+    
+    Stripe.charges.create({
+      amount: amount*100,
+      currency: 'usd',
+      source: stripeToken
+    }, function(err, charge) {
+      //console.log(err, charge);
+      if(err){
+        console.log(err)
+        return;
+      }else{
+        future["return"](charge)  
+      }
+    });
+    
     return future.wait();
   }
 });

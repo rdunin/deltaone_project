@@ -31,7 +31,7 @@
     text-decoration: none;
 }
 .sem3-panel-body{
-   /* overflow:auto; */
+   overflow:auto; 
    /* border:1px solid #D3D3D3; */
    padding-left:15px;
    border-top-width:0px;

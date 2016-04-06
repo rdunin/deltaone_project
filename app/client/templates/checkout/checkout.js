@@ -6,7 +6,47 @@ Template.Checkout.events({
     event.preventDefault();
     
     var cardNumber = event.target.cardNumber.value;
-    alert(cardNumber);
+    var cardExpiry = event.target.cardExpiry.value;
+    var cardCVC = event.target.cardCVC.value;
+    var amount = event.target.order_price.value;
+    
+    //Stripe Key
+    Stripe.setPublishableKey("pk_test_4RGBdrdZB3PQ1IJJiFpBwXGI");
+    
+    console.log(Router.current().params.query.id);
+    
+  //   Stripe.card.createToken({
+		// 	number: cardNumber,
+		// 	cvc: cardCVC,
+		// 	exp: cardExpiry,
+		// }, function(status, response) {
+		// 	stripeToken = response.id;
+			
+		// 	Meteor.call("chargeCard", stripeToken, amount, function(error, result){
+  //         if(error){
+  //           console.log(error.reason);
+  //           return;
+  //         }else{
+  //           //console.log(result.id);
+            
+  //           var qid = Router.current().params.query.id;
+  //           //Update Item in DB
+		//         Orders.update(qid, {
+		//             $set: {
+		//                 pay_id: result.id,
+		//                 status: "Payed"
+		//             }
+		//         });
+		        
+		//         Router.go('Success');
+            
+  //         }
+		// 	});
+			
+		// 	//Meteor.call('chargeCard', stripeToken, amount);
+			
+			
+		// });
     
   }
 });

@@ -12,6 +12,10 @@ Meteor.startup(function () {
    process.env.TWILIO_AUTH_TOKEN = Meteor.settings.twilio.TWILIO_AUTH_TOKEN;
    process.env.TWILIO_NUMBER = Meteor.settings.twilio.TWILIO_NUMBER;
    process.env.TWILIO_NUMBER_TO = Meteor.settings.twilio.TWILIO_NUMBER_TO;
+   process.env.STRIPE_PUBLISHABLE_KEY = Meteor.settings.STRIPE_PUBLISHABLE_KEY;
+   process.env.STRIPE_SECRET_KEY = Meteor.settings.STRIPE_SECRET_KEY;
+   process.env.SEC3_API_KEY = Meteor.settings.SEC3_API_KEY;
+   process.env.SEC3_SECRET_KEY = Meteor.settings.SEC3_SECRET_KEY;
    
    //Parameter for System Email
    Accounts.emailTemplates.siteName = "DeltaOne Project";

@@ -78,6 +78,16 @@ Orders.attachSchema(new SimpleSchema({
     label: "Phone",
     optional: true,
   },
+  price: {
+    type: Number,
+    label: "Price",
+    optional: true,
+  },
+  pay_id: {
+    type: Number,
+    label: "Pay ID",
+    optional: true,
+  },
   items: {
       type: [Itemid],
       optional: true,

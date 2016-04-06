@@ -19,6 +19,7 @@ Template.Create.events({
         var phone = event.target.phone.value;
         
         var lastquery = Session.get('lastquery');
+        var price = event.target.price.value;
         
         //Create Order Query
         var sid = Orders.insert({
@@ -31,6 +32,7 @@ Template.Create.events({
             zip: zip,
             email: email,
             phone: phone,
+            price: price,
             items: itemId,
             lastquery: lastquery,
             status: "Created"
