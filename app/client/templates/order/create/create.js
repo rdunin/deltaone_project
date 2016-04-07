@@ -35,7 +35,8 @@ Template.Create.events({
             price: price,
             items: itemId,
             lastquery: lastquery,
-            status: "Created"
+            status: "Created",
+            createAt: new Date()
         });
         
         Router.go('Checkout', {}, {query: 'id='+sid});

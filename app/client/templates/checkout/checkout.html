@@ -7,6 +7,14 @@
       <div class="container">
           <div class="col-xs-12 no-margin">
               
+            {{#if order.pay_id}}
+                <label class="liner marg-top-40">
+                	Order: {{order._id}}
+                	<a class="col-sm-1 pull-right text-center" href="/profile" ><i class="fa fa-close"></i></a>
+                	<span class="label label-primary">{{order.status}}</span>
+                </label>
+            {{/if}}
+              
             <div class="billing-address">
                 <h2 class="border h1">Shipping address</h2>
                 <form>
@@ -72,7 +80,47 @@
     
                 </form>
             </section>
-  
+          
+        {{#if order.pay_id}}
+            <div class="col-xs-12 col-lg-3 col-lg-offset-9 no-margin-right">
+                <div id="subtotal-order">
+                    <ul class="tabled-data inverse-bold no-border">
+                        <li>
+                            <label>cart subtotal</label>
+                            <div class="value ">${{order.price}}</div>
+                        </li>
+                    </ul>
+					<ul id="total-field" class="tabled-data inverse-bold ">
+                        <li>
+                            <label>order total</label>
+                            <div class="value">${{order.price}}</div>
+                        </li>
+                    </ul>
+				</div>
+			</div>
+        
+            <div class="billing-address">
+                <h2 class="border h1">Payment</h2>
+                <div class="row field-row">
+					<div class="col-xs-12 col-sm-3">
+						<label>Payment ID</label>
+						<p>{{order.pay_id}}</p>
+					</div>
+					<div class="col-xs-12 col-sm-3">
+						<label>Date</label>
+						<p>{{datafrom}}</p>
+					</div>
+					<div class="col-xs-12 col-sm-3">
+						<label>Amount</label>
+						<p>${{order.price}}</p>
+					</div>
+					<div class="col-xs-12 col-sm-3">
+						<label>Status</label>
+						<p><span class="label label-primary">Success</span></p>
+					</div>
+                </div>
+            </div>
+        {{else}}
         <div id="total-area" class="row no-margin">
   				<form role="form" id="payment-form">
           				
@@ -202,6 +250,7 @@
                       
   				  </form>
               </div>
+              {{/if}}
           </div>
       </div>
   </section>

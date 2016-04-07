@@ -36,3 +36,8 @@ Meteor.publish('items', function () {
 Meteor.publish('orders', function () {
   return Orders.find({ user: this.userId });
 });
+
+// Puplish Orders Result for Employee
+Meteor.publish('ordersemp', function () {
+  return Orders.find({});
+});

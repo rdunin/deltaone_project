@@ -84,9 +84,17 @@ Orders.attachSchema(new SimpleSchema({
     optional: true,
   },
   pay_id: {
-    type: Number,
+    type: String,
     label: "Pay ID",
     optional: true,
+  },
+  pay_at:{
+      type: Date,
+      label: "Pay At",
+      optional: true,
+      autoform: {
+            type: "hidden"
+      }
   },
   items: {
       type: [Itemid],
@@ -103,9 +111,17 @@ Orders.attachSchema(new SimpleSchema({
     allowedValues: ['Created', 'Wait', 'Canceled', 'Payed', 'Processing', 'Delivery', 'Ended', 'Shipping', 'Shipped'],
     optional: true,
   },
-  createdAt:{
+  createAt:{
       type: Date,
       label: "Create At",
+      optional: true,
+      autoform: {
+            type: "hidden"
+      }
+  },
+  updatedAt:{
+      type: Date,
+      label: "Update At",
       autoValue: function(){
             return new Date()
       },

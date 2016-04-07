@@ -67,6 +67,12 @@ Template.Profile.helpers({
    last_name: function() {
         return Meteor.user().profile.last_name;
    },
+   orders: ()=> {
+      return Orders.find({},{sort: {updatedAt: -1}});
+   },
+   datafrom: function() {
+        return Chronos.liveMoment(this.createAt).fromNow();
+   }
 });
 
 /*****************************************************************************/

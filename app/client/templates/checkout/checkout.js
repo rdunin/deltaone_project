@@ -5,6 +5,11 @@ Template.Checkout.events({
   'submit #payment-form': function(event){
     event.preventDefault();
     
+    $('#payment-form').find('[type=submit]').prop('disabled', true);
+    $('#payment-form').find('[type=submit]').removeClass("btn-danger");
+    $('#payment-form').find('[type=submit]').text("Processing...");
+    $('#payment-form').find('[type=submit]').addClass("btn-success");
+    
     var cardNumber = event.target.cardNumber.value;
     var cardExpiry = event.target.cardExpiry.value;
     var cardCVC = event.target.cardCVC.value;
@@ -13,40 +18,41 @@ Template.Checkout.events({
     //Stripe Key
     Stripe.setPublishableKey("pk_test_4RGBdrdZB3PQ1IJJiFpBwXGI");
     
-    console.log(Router.current().params.query.id);
+    //console.log(Router.current().params.query.id);
     
-  //   Stripe.card.createToken({
-		// 	number: cardNumber,
-		// 	cvc: cardCVC,
-		// 	exp: cardExpiry,
-		// }, function(status, response) {
-		// 	stripeToken = response.id;
+    Stripe.card.createToken({
+			number: cardNumber,
+			cvc: cardCVC,
+			exp: cardExpiry,
+		}, function(status, response) {
+			stripeToken = response.id;
 			
-		// 	Meteor.call("chargeCard", stripeToken, amount, function(error, result){
-  //         if(error){
-  //           console.log(error.reason);
-  //           return;
-  //         }else{
-  //           //console.log(result.id);
+			Meteor.call("chargeCard", stripeToken, amount, function(error, result){
+          if(error){
+            console.log(error.reason);
+            return;
+          }else{
             
-  //           var qid = Router.current().params.query.id;
-  //           //Update Item in DB
-		//         Orders.update(qid, {
-		//             $set: {
-		//                 pay_id: result.id,
-		//                 status: "Payed"
-		//             }
-		//         });
+            var qid = Router.current().params.query.id;
+            //console.log(qid);
+            //Update Item in DB
+		        Orders.update(qid, {
+		            $set: {
+		                pay_id: result.id,
+		                pay_at: new Date(),
+		                status: "Payed"
+		            }
+		        });
 		        
-		//         Router.go('Success');
+		        Router.go('Success');
             
-  //         }
-		// 	});
+          }
+			});
 			
-		// 	//Meteor.call('chargeCard', stripeToken, amount);
+			//Meteor.call('chargeCard', stripeToken, amount);
 			
 			
-		// });
+		});
     
   }
 });
@@ -64,7 +70,12 @@ Template.Checkout.helpers({
       var sid = Router.current().params.query.id;
       var itemid = Orders.findOne({_id: sid});
       return Items.findOne({_id: itemid.items[0].id});
-    }
+    },
+    datafrom: function() {
+    		var sid = Router.current().params.query.id;
+      	var ord = Orders.findOne({_id: sid});
+        return Chronos.liveMoment(ord.pay_at).fromNow();
+   }
 });
 
 /*****************************************************************************/

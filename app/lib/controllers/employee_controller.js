@@ -10,6 +10,7 @@ EmployeeController = RouteController.extend({
     this.subscribe('searchemp');
     this.subscribe('items');
     this.subscribe('userStatus');
+    this.subscribe('ordersemp');
   },
   
   // Work Action
