@@ -130,3 +130,15 @@ Orders.attachSchema(new SimpleSchema({
       }
   }
 }));
+
+//Add Method
+Meteor.methods({
+  deleteOrder: function(id) {
+       Orders.remove(id);
+   },
+   statusOrder: function(status,id) {
+      Orders.update(id, {
+        $set: {status: status}
+      });    
+   }
+});

@@ -48,74 +48,38 @@
              </span>
             </div>
             
+            <!-- TBS -->
             <div class="panel-group" id="sem3-accordion"> <!-- style="display:none"> -->
+            
+              {{#each sem3num}}
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <div class="h4-sem3 panel-title">
-                    <a id="sem3-name-1" data-toggle="collapse" data-parent="#sem3-accordion" href="#collapse1">Collapsible Group 1</a>
-                  </div>
+                    <a id="sem3data-name-{{sem3i}}" data-toggle="collapse" data-parent="#sem3-accordion" db-target="title" href="#collapse{{sem3i}}">Collapsible Group {{sem3i}}
+                    </a>
+                    <div sem3-num="{{sem3i}}" class="btn btn-primary btn-xs sem3fill"><i class="fa fa-copy"></i></div>
                 </div>
-                <div id="collapse1" class="panel-collapse collapse">
-                  <div id="sem3-results-1" class="panel-body">
+                <div id="collapse{{sem3i}}" class="panel-collapse collapse">
+                  <div id="sem3-results-{{sem3i}}" class="panel-body">
                     <table class="table table-condensed table-striped">
                      <tr>
-                       <td><strong>cat:</strong> <span id="sem3-category-1">-</span> </td>
-                       <td><strong>brand:</strong> <span id="sem3-brand-1">-</span> </td>
-                       <td><strong>color:</strong> <span id="sem3-color-1">-</span> </td>
+                       <td><strong>cat:</strong> <span id="sem3data-category-{{sem3i}}">-</span> </td>
+                       <td><strong>brand:</strong> <span id="sem3data-brand-{{sem3i}}">-</span> </td>
+                       <td><strong>mod:</strong> <span db-target="model" id="sem3data-model-{{sem3i}}">-</span>
+                          <a href="#" sem3-num="{{sem3i}}" class="btn btn-primary btn-xs sem3fill"><i class="fa fa-copy"></i></a>
+                       </td>
+                       <td><strong>color:</strong> <span id="sem3data-color-{{sem3i}}">-</span> </td>
                     </tr> 
                     </table>
-                    <a data-toggle="collapse" href="#featureList-1" aria-expanded="false" aria-controls="featureList-1">
+                    <div id="sem3data-prices-{{sem3i}}">Prices</div>
+                    <a data-toggle="collapse" href="#sem3data-featureList-{{sem3i}}" aria-expanded="false" aria-controls="featureList-{{sem3i}}">
                       Features </a>
-                    <div class="collapse" id="featureList-1">None</div>
-                    <div id="sem3-prices-1">Prices</div>
+                    <div class="collapse" id="sem3data-featureList-{{sem3i}}">None</div>
                   </div>
                 </div>
               </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <div class="h4-sem3 panel-title">
-                    <a id="sem3-name-2" data-toggle="collapse" data-parent="#sem3-accordion" href="#collapse2">Collapsible Group 2</a>
-                  </div>
-                </div>
-                <div id="collapse2" class="panel-collapse collapse">
-                  <div id="sem3-results-2" class="col-md-12 panel-body">
-                    <table class="table table-condensed table-striped">
-                     <tr>
-                       <td><strong>cat:</strong> <span id="sem3-category-2">-</span> </td>
-                       <td><strong>brand:</strong> <span id="sem3-brand-2">-</span> </td>
-                       <td><strong>color:</strong> <span id="sem3-color-2">-</span> </td>
-                    </tr> 
-                    </table>
-                    <a data-toggle="collapse" href="#featureList-2" aria-expanded="false" aria-controls="featureList-2">
-                      Features </a>
-                    <div class="collapse" id="featureList-2">None</div>
-                    <div id="sem3-prices-2">Prices</div>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <div class="panel-title">
-                    <a id="sem3-name-3" data-toggle="collapse" data-parent="#sem3-accordion" href="#collapse3">Collapsible Group 3</a>
-                  </div>
-                </div>
-                <div id="collapse3" class="panel-collapse collapse">
-                  <div id="sem3-results-3" class="col-md-12 panel-body">
-                    <table class="table table-condensed table-striped">
-                     <tr>
-                       <td><strong>cat:</strong> <span id="sem3-category-3">-</span> </td>
-                       <td><strong>brand:</strong> <span id="sem3-brand-3">-</span> </td>
-                       <td><strong>color:</strong> <span id="sem3-color-3">-</span> </td>
-                    </tr> 
-                    </table>
-                    <a data-toggle="collapse" href="#featureList-3" aria-expanded="false" aria-controls="featureList-3">
-                      Features </a>
-                    <div class="collapse" id="featureList-3">None</div>
-                    <div id="sem3-prices-3">Prices</div>
-                  </div>
-                </div>
-              </div>
+              {{/each}}
             </div> 
+              <!-- /TBS -->
         
           </div>
           
@@ -222,11 +186,11 @@
                               </div>
                           </div>
                       </div>
-                      <label class="col-sm-1 control-label">SKU</label>
-                      <div class="col-sm-5">
+                      <label class="col-sm-2 control-label">Product ID</label>
+                      <div class="col-sm-4">
                           <div class="row">
                               <div class="col-sm-12">
-                                  <input type="text" name="sku" class="form-control" value="" placeholder="4213306">
+                                  <input type="text" name="productid" class="form-control" value="" placeholder="4213306">
                               </div>
                           </div>
                       </div>
@@ -239,6 +203,16 @@
                   <div class="form-group">
                   	<div class="col-sm-12">
                   		<a href="#" id="addnewimg" class="btn btn-sm btn-fill btn-info btn-block">Add New Image</a>
+                  	</div>	
+                  </div>
+                  
+                  <div class="competitor">
+                      
+                  </div>
+                  
+                  <div class="form-group">
+                  	<div class="col-sm-12">
+                  		<a href="#" id="addnewcomp" class="btn btn-sm btn-fill btn-info btn-block">Add New Competitor</a>
                   	</div>	
                   </div>
                   

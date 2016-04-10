@@ -28,11 +28,31 @@ if (Meteor.isServer) {
 
 }
 
+// Category = new Meteor.Collection('Category', { schema: {
+//     name: {
+//         type: String
+//     }
+// }});
+
 //Add Images
 Images = new SimpleSchema({
     url:{
         type: String,
         label: "URL",
+        optional: true
+    }
+});
+
+//Add Competitor
+Competitor = new SimpleSchema({
+    store:{
+        type: String,
+        label: "Store",
+        optional: true
+    },
+    price:{
+        type: Number(),
+        label: "Price",
         optional: true
     }
 });
@@ -45,7 +65,7 @@ Items.attachSchema(new SimpleSchema({
     max: 200
   },
   price: {
-    type: String,
+    type: Number,
     label: "Price",
     optional: true,
   },
@@ -54,13 +74,17 @@ Items.attachSchema(new SimpleSchema({
     label: "Model",
     optional: true,
   },
-  sku: {
+  productid: {
     type: String,
-    label: "SKU",
+    label: "Product ID",
     optional: true,
   },
   images: {
       type: [Images],
+      optional: true,
+  },
+  competitor: {
+      type: [Competitor],
       optional: true,
   },
   desc: {

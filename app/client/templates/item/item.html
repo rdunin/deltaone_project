@@ -43,10 +43,10 @@
     						      <span class="sku-value" id="model-value" itemprop="model">{{item.model}}</span>
     						    </li>
     						    {{/if}}
-    						    {{#if item.sku}}
+    						    {{#if item.productid}}
     						    <li class="sku-id">
-    						      <span class="sku-label">SKU:</span>
-    						      <span class="sku-value" id="sku-value" itemprop="productID">{{item.sku}}</span>
+    						      <span class="sku-label">Product ID:</span>
+    						      <span class="sku-value" id="sku-value" itemprop="productID">{{item.productid}}</span>
     						    </li>
     						    {{/if}}
     						  </ul>
@@ -65,43 +65,54 @@
     										<tr>
     											<th>&nbsp;</th>
     											<th><img src="/img/logo.png" width="50" ></th>
-    											<th><img src="/img/bestbuy.jpg" width="50" ></th>
-    											<th><img src="/img/amazon.jpg" width="50" ></th>
+    											{{#each item.competitor}}
+    											  <th><img src="/img/{{store}}.jpg" width="50" ></th>
+    											{{/each}}
     										</tr>
     									  </thead>
     									  <tbody> 
     										<tr>
     											<th scope="row">&nbsp;</th> 
-    											<td>{{item.price}}</td>
-    											<td>$754.00</td>
-    											<td>$747.00</td> 
+    											<td>${{item.price}}</td>
+    											{{#each item.competitor}}
+    											<td>${{price}}</td>
+    											{{/each}}
     										</tr>
     										<tr class="hide-row">
     											<th scope="row">Tax</th>
     											<td>0%</td>
+    											{{#each item.competitor}}
     											<td>10%</td>
-    											<td>10%</td>
+    											{{/each}}
     										</tr>
     										<tr class="hide-row">
     											<th scope="row">Shipping</th>
     											<td>$0.00</td>
+    											{{#each item.competitor}}
     											<td>$0.00</td>
-    											<td>$0.00</td>
+    											{{/each}}
     										</tr>
     										<tr class="hide-row">
     											<th scope="row">Price <br>guarantee</th>
     											<td><i class="fa fa-check fayes"></i></td>
+    											{{#each item.competitor}}
     											<td><i class="fa fa-close fano"></i></td>
-    											<td><i class="fa fa-close fano"></i></td>
+    											{{/each}}
     										</tr>
     										<tr class="hide-row">
     											<th scope="row">Post purchase <br>protection</th>
     											<td><i class="fa fa-check fayes"></i></td>
+    											{{#each item.competitor}}
     											<td><i class="fa fa-close fano"></i></td>
-    											<td><i class="fa fa-close fano"></i></td>
+    											{{/each}}
     										</tr>
     										<tr>
-    											<td colspan="4"><a href="#" onclick="$('.hide-row').toggle('slow'); $('.line').toggleClass('top'); return false;" ><p style="position: absolute; left: 39%; bottom: -29px; color: #fff; z-index: 2;" class="text-center">Compare</p><hr class="line"></a></td>
+    											<td colspan="4">
+    											  <a href="#" onclick="$('.hide-row').toggle('slow'); $('.line').toggleClass('top'); return false;" >
+    											    <p style="position: absolute; left: 39%; bottom: -29px; color: #fff; z-index: 2;" class="text-center">Compare</p>
+    											    <hr class="line">
+    											  </a>
+    											</td>
     										</tr>
     									  </tbody>
     									</table>

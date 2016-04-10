@@ -1,5 +1,6 @@
 var itemid = "9EDrcayZa9x6axA3c";
 var imags = 0;
+var competitor = 0;
 var count = 0;
 
 //Timer for Query
@@ -40,20 +41,43 @@ Template.Work.events({
         $('#itemedit').find('[name=title]').val(this.title);
         $('#itemedit').find('[name=price]').val(this.price);
         $('#itemedit').find('[name=model]').val(this.model);
-        $('#itemedit').find('[name=sku]').val(this.sku);
+        $('#itemedit').find('[name=productid]').val(this.productid);
         
         $('.itemimage').html("");
          
-         imags = this.images.length;
-         for (var i = 0; i < this.images.length; i++) {
-            var img = "<div class='form-group'> <label class='col-sm-2 control-label'>Image</label> <div class='col-sm-8'> <div class='row'> <div class='col-sm-12'> <input type='text' name='images."+i+".url' class='form-control' value='"+this.images[i].url+"' placeholder='Images Url'> </div> </div> </div> <div class='col-sm-2'> <button type='button' class='btn btn-sm btn-fill btn-info remove-item'><span class='glyphicon glyphicon-minus'></span></button> </div> </div>";
-            $('.itemimage').append(img);    
+         //console.log(this.images);
+         if(this.images === undefined){
+            
+         }else{
+            imags = this.images.length;
+            for (var i = 0; i < this.images.length; i++) {
+               var img = "<div class='form-group'> <label class='col-sm-2 control-label'>Image</label> <div class='col-sm-8'> <div class='row'> <div class='col-sm-12'> <input type='text' name='images."+i+".url' class='form-control' value='"+this.images[i].url+"' placeholder='Images Url'> </div> </div> </div> <div class='col-sm-2'> <button type='button' class='btn btn-sm btn-fill btn-info remove-item'><span class='glyphicon glyphicon-minus'></span></button> </div> </div>";
+               $('.itemimage').append(img);    
+            }   
          }
+         
+         $('.competitor').html("");
+         
+         if(this.competitor === undefined){
+            
+         }else{
+            competitor = this.competitor.length;
+            for (var i = 0; i < this.competitor.length; i++) {
+               var comp = "<div class='form-group'> <label class='col-sm-2 control-label'>Store</label> <div class='col-sm-3'> <div class='row'> <div class='col-sm-12'> <input type='text' name='competitor."+i+".store' class='form-control' value='"+this.competitor[i].store+"' placeholder='Competitor Store'> </div> </div> </div> <label class='col-sm-2 control-label'>Price</label> <div class='col-sm-3'> <div class='row'> <div class='col-sm-12'> <input type='text' name='competitor."+i+".price' class='form-control' value='"+this.competitor[i].price+"' placeholder='Competitor Price'> </div> </div> </div> <div class='col-sm-2'> <button type='button' class='btn btn-sm btn-fill btn-info remove-store'><span class='glyphicon glyphicon-minus'></span></button> </div> </div>";
+               $('.competitor').append(comp);
+            }   
+         }
+         
+         
 
         $('#itemedit').find('[name=desc]').val(this.desc);
     },
-    //Hide Item
+    //Remove Image
     'click .remove-item': function(e){
+        $(e.currentTarget).parent().parent().remove();
+    },
+    //Remove Competitor
+    'click .remove-store': function(e){
         $(e.currentTarget).parent().parent().remove();
     },
     //Add New Image to Item
@@ -62,6 +86,13 @@ Template.Work.events({
          var img = "<div class='form-group'> <label class='col-sm-2 control-label'>Image</label> <div class='col-sm-8'> <div class='row'> <div class='col-sm-12'> <input type='text' name='images."+imags+".url' class='form-control' value='' placeholder='Images Url'> </div> </div> </div> <div class='col-sm-2'> <button type='button' class='btn btn-sm btn-fill btn-info remove-item'><span class='glyphicon glyphicon-minus'></span></button> </div> </div>";
          $('.itemimage').append(img);    
          imags++;
+    },
+    //Add New Competitor to Item
+    'click #addnewcomp': function(event){
+         event.preventDefault();
+         var comp = "<div class='form-group'> <label class='col-sm-2 control-label'>Store</label> <div class='col-sm-3'> <div class='row'> <div class='col-sm-12'> <input type='text' name='competitor."+competitor+".store' class='form-control' value='' placeholder='Competitor Store'> </div> </div> </div> <label class='col-sm-2 control-label'>Price</label> <div class='col-sm-3'> <div class='row'> <div class='col-sm-12'> <input type='text' name='competitor."+competitor+".price' class='form-control' value='' placeholder='Competitor Price'> </div> </div> </div> <div class='col-sm-2'> <button type='button' class='btn btn-sm btn-fill btn-info remove-store'><span class='glyphicon glyphicon-minus'></span></button> </div> </div>";
+         $('.competitor').append(comp);    
+         competitor++;
     },
     //Select Query
     'click .queryid': function(){
@@ -90,6 +121,7 @@ Template.Work.events({
       
        $('#querywork').find('[name=queryid]').val(this._id);
        $('#querywork').find('[name=itemid]').val(this.items);
+       $('#semantic input').val(queryText);
        
        $('.fatrash').attr('qid', this._id);
        
@@ -116,6 +148,17 @@ Template.Work.events({
           alert("Please select search query!");
        }
     },
+    // <TBS> fill sem3 data for query
+    'click .sem3fill': function(e){
+       $('#itemadds').removeClass('hidden');
+       var sem3DataEl = $(e.currentTarget).parent().children('[id|=sem3data]');
+       var sem3Data = sem3DataEl.text();
+       var itemaddsTarget = sem3DataEl.attr('db-target');
+       console.log($(e.currentTarget));
+       var itemaddsMatch = '[name='+itemaddsTarget+']';
+       $('#itemadds').find(itemaddsMatch).val(sem3Data);
+    },
+    //</TBS>
     //Update Selected Item
     'submit .itemform': function(event){
         event.preventDefault();
@@ -124,7 +167,7 @@ Template.Work.events({
         var title = $('#itemedit').find('[name=title]').val();
         var price = $('#itemedit').find('[name=price]').val();
         var model = $('#itemedit').find('[name=model]').val();
-        var sku = $('#itemedit').find('[name=sku]').val();
+        var productid = $('#itemedit').find('[name=productid]').val();
         var desc = $('#itemedit').find('[name=desc]').val();
         
         var countimg = $('.itemimage .form-group').length;
@@ -134,15 +177,30 @@ Template.Work.events({
             img[i] = {url: $('.itemimage .form-group input:eq('+i+')').val()};
         }
         
+        var countcomp = $('.competitor .form-group').length;
+        var comp = [];
+        
+        console.log("send");
+        
+        var o = 0;
+        for (var i = 0; i <= countcomp; i++) {
+           console.log(i)
+           var s = i+1;
+           comp[o] = {store: $('.competitor .form-group input:eq('+i+')').val(), price: $('.competitor .form-group input:eq('+s+')').val()};
+           i++;
+           o++;
+        }
+        
         //Update Item in DB
         Items.update(id, {
             $set: {
                 title: title,
                 price: price,
                 model: model,
-                sku: sku,
+                productid: productid,
                 desc: desc,
-                images: img
+                images: img,
+                competitor: comp
             }
         });
         
@@ -175,15 +233,17 @@ Template.Work.events({
                var productNum = productInd + 1;
                
                // get css ids for displaying semantic product data
-               var productNameID = '#sem3-name-'+productNum;
-               var productCatID = '#sem3-category-'+productNum;
-               var productBrandID = '#sem3-brand-'+productNum;
-               var productColorID = '#sem3-color-'+productNum;
+               var productNameID = '#sem3data-name-'+productNum;
+               var productCatID = '#sem3data-category-'+productNum;
+               var productBrandID = '#sem3data-brand-'+productNum;
+               var productModelID = '#sem3data-model-'+productNum;
+               var productColorID = '#sem3data-color-'+productNum;
                var featuresID = '#featureList-'+productNum;
                // display basic data
                $(productNameID).text(result.results[productInd].name);
                $(productCatID).text(result.results[productInd].category);
                $(productBrandID).text(result.results[productInd].brand);
+               $(productModelID).text(result.results[productInd].model);
                $(productColorID).text(result.results[productInd].color);
                
                // display the product features object of key:value pairs
@@ -206,20 +266,28 @@ Template.Work.events({
                var stores = result.results[productInd].sitedetails;
                var numStores = stores.length;
                var priceList = "";
+               var numCompetitor = 0;
+               // var validCompetitors = "walmart.com,amazon.com,bestbuy.com,target.com,overstock.com";
                for (var i = 0; i < numStores; i++) {
                   var store = stores[i].name;
                   var recentOffers = stores[i].recentoffers_count;
+                  if (recentOffers>0) { numCompetitor++; };  // not used
                   console.log(store)
                   var numStorePrices = stores[i].latestoffers.length;
                   var storeLink = "<a target='_blank' href='" + stores[i].url + "'>" + store + "</a>";
                   priceList = priceList.concat(storeLink + " (" + recentOffers + "): ");
-                  priceList = priceList.concat("<strong>" + stores[i].latestoffers[0].price+"</strong> ");
+                  priceList = priceList.concat("<strong db-target='competitorPrice" + numCompetitor + "' " 
+                                                + "id='sem3data-price-" + numCompetitor + "'>" 
+                                                + stores[i].latestoffers[0].price+"</strong> ");
                   for (var j = 1; j < numStorePrices; j++) {
                      priceList = priceList.concat(stores[i].latestoffers[j].price+" ");
                   }
+                  var addCompetitorPriceHtml = '<div class="btn btn-primary btn-xs sem3fill-price">'
+                                                    + '<i class="fa fa-copy"></i></div>';
+                  priceList = priceList.concat(addCompetitorPriceHtml);
                   priceList = priceList.concat("<br>");
                }
-               var sem3ID = '#sem3-prices-'+productNum;
+               var sem3ID = '#sem3data-prices-'+productNum;
                $(sem3ID).html(priceList);
                //console.log(result.results[0]);
             }
@@ -240,6 +308,13 @@ Template.registerHelper('equals', function (a, b) {
 /* Work: Helpers */
 /*****************************************************************************/
 Template.Work.helpers({
+   // <TBS> index of sem3 result
+   sem3num: function() {
+      return _.map([1,2,3], function(idx) {
+         return {sem3i: idx};
+      });
+   },
+   // </TBS>
    //Edited Item
    edititem: function() {
        return Items.findOne({_id: itemid});

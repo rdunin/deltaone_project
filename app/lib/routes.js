@@ -44,6 +44,22 @@ Router.route('/employee/items', {
   where: 'client'
 });
 
+//Router Main Employee Orders Page
+Router.route('/employee/orders', {
+  name: 'EmployeeOrders',
+  controller: 'EmployeeController',
+  action: 'orders',
+  where: 'client'
+});
+
+//Router Main Employee Orders Page
+Router.route('/employee/orders/:_id', {
+  name: 'EmployeeOneOrder',
+  controller: 'EmployeeController',
+  action: 'oneorder',
+  where: 'client'
+});
+
 //Router Orders Page
 Router.route('/order/create', {
   name: 'OrdersCreate',

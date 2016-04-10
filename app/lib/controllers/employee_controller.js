@@ -25,6 +25,15 @@ EmployeeController = RouteController.extend({
     this.render('Eitems', {});
   },
   
+  // Work Action
+  orders: function() {
+    //Render Items Employee Template
+    this.render('Eorders', {});
+  },
+  oneorder: function() {
+    this.render('Oneorder', {});
+  },
+  
   // Subscriptions or other things we want to "wait" on. This also
   // automatically uses the loading hook. That's the only difference between
   // this option and the subscriptions option above.
@@ -40,6 +49,11 @@ EmployeeController = RouteController.extend({
   // return Posts.findOne({_id: this.params._id});
   
   data: function () {
+    return {
+        //Get Item ID from URL and Find Orders in DataBase
+        order: Orders.findOne(this.params._id),
+        orderId: this.params._id
+    };
   },
   
   // You can provide any of the hook options
