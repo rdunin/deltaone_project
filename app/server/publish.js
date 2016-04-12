@@ -41,3 +41,8 @@ Meteor.publish('orders', function () {
 Meteor.publish('ordersemp', function () {
   return Orders.find({});
 });
+
+// Puplish All Category
+Meteor.publish('category', function () {
+  return Category.find({});
+});

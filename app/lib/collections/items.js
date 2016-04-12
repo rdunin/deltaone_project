@@ -57,6 +57,13 @@ Competitor = new SimpleSchema({
     }
 });
 
+categoryName = function(){
+  var cn = Category.find().map(function(cn){ return cn.name });
+  //console.log(cn)
+  return cn;
+};
+
+
 //Create Mongo Schema
 Items.attachSchema(new SimpleSchema({
   title: {
@@ -87,6 +94,47 @@ Items.attachSchema(new SimpleSchema({
       type: [Competitor],
       optional: true,
   },
+  catlvl1: {
+    type: String,
+    label: "Category 1",
+    optional: true,
+  },
+  catlvl2: {
+    type: String,
+    label: "Category 2",
+    optional: true,
+  },
+  catlvl3: {
+    type: String,
+    label: "Category 3",
+    optional: true,
+  },
+  catlvl4: {
+    type: String,
+    label: "Category 4",
+    optional: true,
+  },
+  // category : {
+  //   type: String,
+  //   label: "Category",
+  //   optional:true,
+  //   allowedValues: function () {
+  //       return Category.find().map(function (c) {
+  //         return c.name;
+  //       });
+  //     },
+  //   autoform: {
+  //     afFieldInput: {
+  //       type: "select",
+  //       class: "sel"
+  //     },
+  //     options: function () {
+  //       return Category.find().map(function (c) {
+  //         return {label: c.name, value: c.name};
+  //       });
+  //     }
+  //   }
+  // },
   desc: {
     type: String,
     label: "Desciption",

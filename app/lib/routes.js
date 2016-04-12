@@ -36,11 +36,20 @@ Router.route('/employee/work', {
   action: 'work',
   where: 'client'
 });
+
 //Router Main Employee Items Page
 Router.route('/employee/items', {
   name: 'EmployeeItems',
   controller: 'EmployeeController',
   action: 'items',
+  where: 'client'
+});
+
+//Router Main Employee Category Page
+Router.route('/employee/category', {
+  name: 'EmployeeCategory',
+  controller: 'EmployeeController',
+  action: 'category',
   where: 'client'
 });
 

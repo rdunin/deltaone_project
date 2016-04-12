@@ -11,6 +11,7 @@ EmployeeController = RouteController.extend({
     this.subscribe('items');
     this.subscribe('userStatus');
     this.subscribe('ordersemp');
+    this.subscribe('category');
   },
   
   // Work Action
@@ -25,13 +26,20 @@ EmployeeController = RouteController.extend({
     this.render('Eitems', {});
   },
   
-  // Work Action
+  // Orders Action
   orders: function() {
     //Render Items Employee Template
     this.render('Eorders', {});
   },
+  
+  // One Order
   oneorder: function() {
     this.render('Oneorder', {});
+  },
+  
+  // Category Action
+  category: function() {
+    this.render('Category', {});
   },
   
   // Subscriptions or other things we want to "wait" on. This also

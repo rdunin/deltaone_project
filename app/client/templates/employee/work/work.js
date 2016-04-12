@@ -154,9 +154,42 @@ Template.Work.events({
        var sem3DataEl = $(e.currentTarget).parent().children('[id|=sem3data]');
        var sem3Data = sem3DataEl.text();
        var itemaddsTarget = sem3DataEl.attr('db-target');
-       console.log($(e.currentTarget));
        var itemaddsMatch = '[name='+itemaddsTarget+']';
        $('#itemadds').find(itemaddsMatch).val(sem3Data);
+    },
+    'click .sem3fill-competitor': function(e){
+       $('#itemadds').removeClass('hidden');
+       var sem3DataEl = $(e.currentTarget).parent().children('[id|=sem3data-price]');
+       var sem3Price = sem3DataEl.text();
+       var sem3Store = sem3DataEl.attr('store');
+       var priceSelector = 'input.form-control[name^=competitor][name$=price]:eq(-1)';
+       var storeSelector = 'input.form-control[name^=competitor][name$=store]:eq(-1)';
+       $('#itemadds').find(priceSelector).val(sem3Price);
+       $('#itemadds').find(storeSelector).val(sem3Store);
+    },
+    'click .sem3fill-category': function(e){
+       $('#itemadds').removeClass('hidden');
+       var sem3DataEl = $(e.currentTarget).parent().children('[id|=sem3data-category]');
+       var sem3CatID = sem3DataEl.attr('cat-id');
+       
+       Meteor.call("getfullcategory", sem3CatID, function(error, catresult){
+         if(error){
+           console.log(error);
+           return;
+         }else{
+           console.log(catresult);
+           fullCategoryStr = catresult.results[0].crumb;
+           console.log(fullCategoryStr);
+           var allCats = fullCategoryStr.split("|");
+           console.log(allCats)
+         }
+         for (var i = allCats.length; i>0; i--) {
+           var reverseIndex = allCats.length - i;
+           console.log("reverseIndex:" + reverseIndex);
+           var catSelector = 'input.form-control[name^=catlvl]:eq(' + reverseIndex + ')';
+           $('#itemadds').find(catSelector).val(allCats[i-1]);
+         }
+       });
     },
     //</TBS>
     //Update Selected Item
@@ -231,7 +264,7 @@ Template.Work.events({
             // todo: show model number
             for (var productInd = 0; productInd < 3; productInd++) {
                var productNum = productInd + 1;
-               
+               console.log("productInd:"+productInd);
                // get css ids for displaying semantic product data
                var productNameID = '#sem3data-name-'+productNum;
                var productCatID = '#sem3data-category-'+productNum;
@@ -241,10 +274,14 @@ Template.Work.events({
                var featuresID = '#featureList-'+productNum;
                // display basic data
                $(productNameID).text(result.results[productInd].name);
-               $(productCatID).text(result.results[productInd].category);
                $(productBrandID).text(result.results[productInd].brand);
                $(productModelID).text(result.results[productInd].model);
                $(productColorID).text(result.results[productInd].color);
+               $(productCatID).text(result.results[productInd].category);
+               
+               var sem3cat_id = result.results[productInd].cat_id;
+               $(productCatID).attr('cat-id',sem3cat_id);
+               console.log('sem3cat_id:'+sem3cat_id);
                
                // display the product features object of key:value pairs
                var featuresObj = result.results[productInd].features;
@@ -265,6 +302,7 @@ Template.Work.events({
                // and show if product price is currently active
                var stores = result.results[productInd].sitedetails;
                var numStores = stores.length;
+               console.log("numStores:" + numStores)
                var priceList = "";
                var numCompetitor = 0;
                // var validCompetitors = "walmart.com,amazon.com,bestbuy.com,target.com,overstock.com";
@@ -273,19 +311,21 @@ Template.Work.events({
                   var recentOffers = stores[i].recentoffers_count;
                   if (recentOffers>0) { numCompetitor++; };  // not used
                   console.log(store)
+                  priceList = priceList.concat("<div id='store-div'>");
                   var numStorePrices = stores[i].latestoffers.length;
                   var storeLink = "<a target='_blank' href='" + stores[i].url + "'>" + store + "</a>";
                   priceList = priceList.concat(storeLink + " (" + recentOffers + "): ");
                   priceList = priceList.concat("<strong db-target='competitorPrice" + numCompetitor + "' " 
-                                                + "id='sem3data-price-" + numCompetitor + "'>" 
+                                                + "id='sem3data-price-" + numCompetitor + "' "
+                                                + "store='" + store + "' >" 
                                                 + stores[i].latestoffers[0].price+"</strong> ");
                   for (var j = 1; j < numStorePrices; j++) {
                      priceList = priceList.concat(stores[i].latestoffers[j].price+" ");
                   }
-                  var addCompetitorPriceHtml = '<div class="btn btn-primary btn-xs sem3fill-price">'
+                  var addCompetitorPriceHtml = '<div class="btn btn-primary btn-xs sem3fill-competitor">'
                                                     + '<i class="fa fa-copy"></i></div>';
                   priceList = priceList.concat(addCompetitorPriceHtml);
-                  priceList = priceList.concat("<br>");
+                  priceList = priceList.concat("</div>");
                }
                var sem3ID = '#sem3data-prices-'+productNum;
                $(sem3ID).html(priceList);
