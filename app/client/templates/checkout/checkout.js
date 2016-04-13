@@ -5,11 +5,13 @@ Template.Checkout.events({
   'submit #payment-form': function(event){
     event.preventDefault();
     
+    //Animation Button
     $('#payment-form').find('[type=submit]').prop('disabled', true);
     $('#payment-form').find('[type=submit]').removeClass("btn-danger");
     $('#payment-form').find('[type=submit]').text("Processing...");
     $('#payment-form').find('[type=submit]').addClass("btn-success");
     
+    //Get Card
     var cardNumber = event.target.cardNumber.value;
     var cardExpiry = event.target.cardExpiry.value;
     var cardCVC = event.target.cardCVC.value;
@@ -18,23 +20,33 @@ Template.Checkout.events({
     //Stripe Key
     Stripe.setPublishableKey("pk_test_4RGBdrdZB3PQ1IJJiFpBwXGI");
     
-    //console.log(Router.current().params.query.id);
-    
+    //Stripe Create Token
     Stripe.card.createToken({
 			number: cardNumber,
 			cvc: cardCVC,
 			exp: cardExpiry,
 		}, function(status, response) {
 			stripeToken = response.id;
-			
+			//Charge Money from Card
 			Meteor.call("chargeCard", stripeToken, amount, function(error, result){
           if(error){
             console.log(error.reason);
-            return;
-          }else{
             
+            console.log("Error");
+            
+            //Animation Button
+				    $('#payment-form').find('[type=submit]').removeClass("btn-danger");
+				    $('#payment-form').find('[type=submit]').text("Something is wrong...");
+				    $('#payment-form').find('[type=submit]').prop('disabled', false);
+				    $('#payment-form').find('[type=submit]').text("Refresh Order");
+				    
+				    Router.go('Checkout', {}, {query: 'id='+Router.current().params.query.id});
+			    
+          }else{
             var qid = Router.current().params.query.id;
-            //console.log(qid);
+            
+            console.log(result);
+            
             //Update Item in DB
 		        Orders.update(qid, {
 		            $set: {
@@ -44,12 +56,11 @@ Template.Checkout.events({
 		            }
 		        });
 		        
+		        //Redirect to Success Page
 		        Router.go('Success');
             
           }
 			});
-			
-			//Meteor.call('chargeCard', stripeToken, amount);
 			
 			
 		});
@@ -61,16 +72,18 @@ Template.Checkout.events({
 /* Checkout: Helpers */
 /*****************************************************************************/
 Template.Checkout.helpers({
+	  // Get Order
     order: ()=> {
       var sid = Router.current().params.query.id;
       return Orders.findOne({_id: sid});
     },
+    //Get Item
     item: function(){
-      //var item = Meteor.users.findOne({_id: this.user});
       var sid = Router.current().params.query.id;
       var itemid = Orders.findOne({_id: sid});
       return Items.findOne({_id: itemid.items[0].id});
     },
+    //Data
     datafrom: function() {
     		var sid = Router.current().params.query.id;
       	var ord = Orders.findOne({_id: sid});
@@ -86,6 +99,7 @@ Template.Checkout.onCreated(function () {
 
 Template.Checkout.onRendered(function () {
   
+  //Jquery Card Validation
   $(document).ready(function() {
 		
 		var $form = $('#payment-form');

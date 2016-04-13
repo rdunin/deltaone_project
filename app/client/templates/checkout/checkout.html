@@ -65,7 +65,11 @@
                     <div class="row no-margin order-item">
                         
     				    <div class="col-xs-12 col-sm-3 pull-center">
-                            <img src="{{item.images.[0].url}}" alt="...">
+                            {{#if item.images.[0].url}}
+							  <img src="{{item.images.[0].url}}">
+							{{else}}
+							  <img src="/img/no_image.jpg">
+							{{/if}}
                         </div>
     				
                         <div class="col-xs-12 col-sm-7 ">
@@ -213,6 +217,10 @@
                               <li>
                                   <label>cart subtotal</label>
                                   <div class="value ">${{item.price}}</div>
+                              </li>
+                              <li>
+                                  <label>Tax</label>
+                                  <div class="value ">$0.00</div>
                               </li>
                               <li>
                                   <label>shipping</label>

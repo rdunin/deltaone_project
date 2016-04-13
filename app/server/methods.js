@@ -49,6 +49,7 @@ Meteor.methods({
     );
     
   },
+  //Method To Category from Semantic 3
   'getfullcategory': function(query){
     var future = new Future();
     
@@ -59,29 +60,19 @@ Meteor.methods({
              console.log("Couldn't execute request: get_categories");
              return;
           }
-          //console.log( "Results of request:\n" + JSON.stringify( categories ) );
+          
           future["return"](JSON.parse(categories))
        }
     );
     return future.wait();
-    //return query;
   },
-    
+  //Method To Product from Semantic 3  
   'getproduct': function(query){
     var future = new Future();
     
-    //var api_key = process.env.SEC3_API_KEY;
-    //var api_secret = process.env.SEC3_SECRET_KEY;
-    //var sem3 = require('semantics3-node')(api_key,api_secret);
-    
-    //var sem3 = Meteor.npmRequire('semantics3-node')(api_key,api_secret);
-    
     // Build the request 
     sem3.products.products_field( "search", query );
-    //console.log(query+" New");
     
-    var answer;
-    //var api;
    // Run the request 
    sem3.products.get_products(
       function(err, products) {
@@ -94,12 +85,9 @@ Meteor.methods({
       }
     );
     
-    //console.log(answer);
-    //function processFile() { answer = api; }
-    
-    //return answer;
     return future.wait();
   },
+  //Method To Charge Money from Card by Stripe
   'chargeCard': function(stripeToken, amount) {
     var future = new Future();
     var Stripe = StripeAPI(process.env.STRIPE_SECRET_KEY);
@@ -112,7 +100,7 @@ Meteor.methods({
       //console.log(err, charge);
       if(err){
         console.log(err)
-        return;
+        future["return"](err)  
       }else{
         future["return"](charge)  
       }

@@ -55,7 +55,11 @@
                   <h2 class="border h1">Items</h2>
                   <div class="row no-margin order-item">
                       <div class="col-xs-12 col-sm-3 pull-center">
-                          <img src="{{item.images.[0].url}}" alt="...">
+                          {{#if item.images.[0].url}}
+      							  <img src="{{item.images.[0].url}}">
+      							{{else}}
+      							  <img src="/img/no_image.jpg">
+      							{{/if}}
                       </div>
       		            <div class="col-xs-12 col-sm-7 ">
                           <div class="title"><a target="_blank" href="/item/{{item._id}}">{{item.title}}</a></div>

@@ -244,7 +244,6 @@ Template.Work.events({
       Session.set('searchquery', itemsearch);
     },
     'click #semantic button': function(){
-        $('#sem3-accordion').show();
         var query = $('#semantic input').val();
         //console.log(query)
         //var ans = Meteor.call('getproduct', query);
@@ -257,6 +256,7 @@ Template.Work.events({
             return;
           }else{
             console.log(result);
+            $('#sem3-accordion').show();
             
             // <TBS>: Load product data from semantic 3
             //  Currently loads first 3 products
@@ -271,7 +271,7 @@ Template.Work.events({
                var productBrandID = '#sem3data-brand-'+productNum;
                var productModelID = '#sem3data-model-'+productNum;
                var productColorID = '#sem3data-color-'+productNum;
-               var featuresID = '#featureList-'+productNum;
+               var featuresID = '#sem3data-featureList-'+productNum;
                // display basic data
                $(productNameID).text(result.results[productInd].name);
                $(productBrandID).text(result.results[productInd].brand);

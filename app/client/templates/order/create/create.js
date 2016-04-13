@@ -2,6 +2,7 @@
 /* Create: Event Handlers */
 /*****************************************************************************/
 Template.Create.events({
+    //Save all order data
     'submit form': function(event){
         event.preventDefault();
         
@@ -39,6 +40,7 @@ Template.Create.events({
             createAt: new Date()
         });
         
+        //Redirect to Checkout
         Router.go('Checkout', {}, {query: 'id='+sid});
         
     }
@@ -48,6 +50,7 @@ Template.Create.events({
 /* Create: Helpers */
 /*****************************************************************************/
 Template.Create.helpers({
+    //Get Order Item
     item: ()=> {
       var sid = Router.current().params.query.id;
       return Items.findOne({_id: sid});

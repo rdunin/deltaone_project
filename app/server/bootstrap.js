@@ -2,7 +2,7 @@ Meteor.startup(function () {
    
    //Node Package
    Future = Npm.require('fibers/future');
-   
+   //Connect to Semantic3 Node Package
    sem3 = Meteor.npmRequire('semantics3-node')(Meteor.settings.SEC3_API_KEY, Meteor.settings.SEC3_SECRET_KEY);
    
    //Add Guest Account

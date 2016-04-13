@@ -20,7 +20,7 @@ EmployeeController = RouteController.extend({
     this.render('Work', {});
   },
   
-  // Work Action
+  // Item Action
   items: function() {
     //Render Items Employee Template
     this.render('Eitems', {});
@@ -32,7 +32,7 @@ EmployeeController = RouteController.extend({
     this.render('Eorders', {});
   },
   
-  // One Order
+  // One Order Action
   oneorder: function() {
     this.render('Oneorder', {});
   },
