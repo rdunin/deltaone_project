@@ -47,17 +47,32 @@ Template.Checkout.events({
             
             console.log(result);
             
-            //Update Item in DB
-		        Orders.update(qid, {
-		            $set: {
-		                pay_id: result.id,
-		                pay_at: new Date(),
-		                status: "Payed"
-		            }
-		        });
-		        
-		        //Redirect to Success Page
-		        Router.go('Success');
+            if(result.type == "StripeInvalidRequestError"){
+            	
+            	//Animation Button if error
+					    $('#payment-form').find('[type=submit]').addClass("btn-danger");
+					    $('#payment-form').find('[type=submit]').text("Something is wrong...");
+					    $('#payment-form').find('[type=submit]').text("Please check card.");
+					    
+					    setTimeout( function() {
+					    	$('#payment-form').find('[type=submit]').prop('disabled', false);
+					    	$('#payment-form').find('[type=submit]').text("Try Pay Again");	
+					    } , 5000);
+					    
+					  }else{
+            		//Update Item in DB
+				        Orders.update(qid, {
+				            $set: {
+				                pay_id: result.id,
+				                pay_at: new Date(),
+				                status: "Payed"
+				            }
+				        });
+				        
+				        //Redirect to Success Page
+				        Router.go('Success');
+            }
+            
             
           }
 			});

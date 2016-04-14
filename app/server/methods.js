@@ -99,7 +99,7 @@ Meteor.methods({
     }, function(err, charge) {
       //console.log(err, charge);
       if(err){
-        console.log(err)
+        console.log("Payment Error");
         future["return"](err)  
       }else{
         future["return"](charge)  

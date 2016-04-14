@@ -8,6 +8,7 @@ Template.Eitems.events({
 /* Eitems: Helpers */
 /*****************************************************************************/
 Template.Eitems.helpers({
+   //Update Item ID
    itemsIndex: () => ItemsIndex,
    updateItemId: function(){
       return this._id;

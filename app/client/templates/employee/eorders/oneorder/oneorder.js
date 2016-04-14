@@ -2,10 +2,10 @@
 /* Oneorder: Event Handlers */
 /*****************************************************************************/
 Template.Oneorder.events({
+   //Change Order Status
    'click .updatestatus': function(event){
       event.preventDefault();
       var status = $(".orderstatus").val();
-      //console.log(status, Template.currentData().order._id)
       Meteor.call('statusOrder', status, Template.currentData().order._id);
    }
 });
@@ -14,15 +14,17 @@ Template.Oneorder.events({
 /* Oneorder: Helpers */
 /*****************************************************************************/
 Template.Oneorder.helpers({
+   //Get Order User
    'testUser':function(){
-      //console.log(Template.currentData().order.user);
       return Template.currentData().order.user;
    },
+   //Get Item
    item: function(){
       //var item = Meteor.users.findOne({_id: this.user});
       var itemid = Template.currentData().order.items[0].id;
       return Items.findOne({_id: itemid});
    },
+   //Get Date
    datafrom: function() {
     	return Chronos.liveMoment(Template.currentData().order.pay_at).fromNow();
    }

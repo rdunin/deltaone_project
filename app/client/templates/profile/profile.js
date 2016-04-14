@@ -2,6 +2,7 @@
 /* Profile: Event Handlers */
 /*****************************************************************************/
 Template.Profile.events({
+   //Edit Profile
    'click .editone': function(event){
       event.preventDefault();
       var text = $(event.currentTarget).text();
@@ -16,6 +17,7 @@ Template.Profile.events({
       $('#personaledit').toggle(); 
       $('#personal').toggle();
    },
+   //Edit Data
    'click .editdata': function(event){
       event.preventDefault();
       var text = $(event.currentTarget).text();
@@ -46,7 +48,6 @@ Template.Profile.events({
          
          
       }
-      
       $('#shippingedit').toggle(); 
       $('#shipping').toggle();
    }
@@ -56,20 +57,25 @@ Template.Profile.events({
 /* Profile: Helpers */
 /*****************************************************************************/
 Template.Profile.helpers({
+   //Get User Email
    userEmail: function() {
         //var userProfile = Meteor.users.findOne({_id: this.user});
         //return userProfile.emails[0].address;
         return Meteor.user().emails[0].address;
    },
+   //Get User Firstname
    first_name: function() {
         return Meteor.user().profile.first_name;
    },
+   //Get User Lastname
    last_name: function() {
         return Meteor.user().profile.last_name;
    },
+   //Get Orders
    orders: ()=> {
       return Orders.find({},{sort: {updatedAt: -1}});
    },
+   //Get Date
    datafrom: function() {
         return Chronos.liveMoment(this.createAt).fromNow();
    }

@@ -2,6 +2,7 @@
 /* Eorders: Event Handlers */
 /*****************************************************************************/
 Template.Eorders.events({
+   //Delete Order
    'click .delorder': function(event){
       event.preventDefault();
       //console.log(this._id);
@@ -17,6 +18,7 @@ Template.Eorders.helpers({
    orders: ()=> {
       return Orders.find({},{sort: {updatedAt: -1}});
    },
+   //Get Order Date
    datafrom: function() {
         return Chronos.liveMoment(this.createAt).fromNow();
    }

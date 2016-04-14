@@ -62,7 +62,6 @@ Template.Search.helpers({
         var item = Items.findOne({_id: ser.items});
       }
       
-      
       return {"search": ser, "item": item};
     }
 });
