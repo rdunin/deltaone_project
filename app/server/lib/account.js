@@ -8,8 +8,8 @@ ServiceConfiguration.configurations.remove({
 //Add Facebook Config
 ServiceConfiguration.configurations.insert({
     service: 'facebook',
-    appId: "1415166228770419",
-    secret: "3f21be5fe73e8d1df78a5b638a23e419"
+    appId: "#",
+    secret: "#"
 });
 
 //Disconnect standart Google Service
@@ -20,8 +20,8 @@ ServiceConfiguration.configurations.remove({
 //Add Google Config
 ServiceConfiguration.configurations.insert({
   service: "google",
-  clientId: "386193664948-qiodul53qeq69sp15vdamfjs84uppso5.apps.googleusercontent.com",
-  secret: "MOZS8s54mBm1nRLiPI80uxdi"
+  clientId: "#",
+  secret: "#"
 });
 
 // When User Sign-Up
